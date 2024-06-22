@@ -7,8 +7,10 @@ import {
   Pressable,
 } from 'react-native';
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const AccountModal = () => {
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -20,11 +22,11 @@ const AccountModal = () => {
         }}>
         <View>
           <View>
-            {/* <AccountModal /> */}
             <View style={styles.card}>
               <View style={styles.cardContent}>
                 <View style={styles.header}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('LandingScreen')}>
                     <Text>EatMe Logo</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -35,7 +37,9 @@ const AccountModal = () => {
               </View>
             </View>
             <View style={styles.container}>
-              <TouchableOpacity style={styles.signupOrLoginButton}>
+              <TouchableOpacity
+                style={styles.signupOrLoginButton}
+                onPress={() => navigation.navigate('AuthLanding')}>
                 <Text style={styles.buttonText}>Sign up or log in </Text>
               </TouchableOpacity>
             </View>

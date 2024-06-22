@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 const FooterComponent = () => {
@@ -7,7 +7,7 @@ const FooterComponent = () => {
       <View style={styles.cardContainer}>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <Text style={styles.cardTextHeading}>Discover Deliveroo</Text>
+            <Text style={styles.cardTextHeading}>Discover EatMe</Text>
             <FlatList
               scrollEnabled={false}
               data={[
@@ -21,13 +21,15 @@ const FooterComponent = () => {
                 {key: 'Engineering blog'},
                 {key: 'Design blog'},
                 {key: 'Gift Cards'},
-                {key: 'Deliveroo Students'},
+                {key: 'EatMe Students'},
                 {key: 'Careers'},
                 {key: 'Restaurant signup'},
                 {key: 'Become a rider'},
               ]}
               renderItem={({item}) => (
-                <Text style={styles.cardText}>{item.key}</Text>
+                <TouchableOpacity>
+                  <Text style={styles.cardText}>{item.key}</Text>
+                </TouchableOpacity>
               )}
             />
           </View>
@@ -49,7 +51,9 @@ const FooterComponent = () => {
                 {key: 'Public Authority Requests'},
               ]}
               renderItem={({item}) => (
-                <Text style={styles.cardText}>{item.key}</Text>
+                <TouchableOpacity>
+                  <Text style={styles.cardText}>{item.key}</Text>
+                </TouchableOpacity>
               )}
             />
           </View>
@@ -66,21 +70,47 @@ const FooterComponent = () => {
                 {key: 'Brands'},
               ]}
               renderItem={({item}) => (
-                <Text style={styles.cardText}>{item.key}</Text>
+                <TouchableOpacity>
+                  <Text style={styles.cardText}>{item.key}</Text>
+                </TouchableOpacity>
               )}
             />
           </View>
         </View>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <Text style={styles.cardTextHeading}>Take Deliveroo with you</Text>
+            <Text style={styles.cardTextHeading}>Take EatMe with you</Text>
             <FlatList
               scrollEnabled={false}
               data={[{key: 'AppleStore Button'}, {key: 'GooglePlay Button'}]}
               renderItem={({item}) => (
-                <Text style={styles.cardText}>{item.key}</Text>
+                <TouchableOpacity>
+                  <Text style={styles.cardText}>{item.key}</Text>
+                </TouchableOpacity>
               )}
             />
+          </View>
+        </View>
+        <View style={styles.iconAndTextContainer}>
+          <View style={styles.socialMediaIconsContainer}>
+            <View style={styles.socialMediaIcon}>
+              <TouchableOpacity>
+                <Text>F</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.socialMediaIcon}>
+              <TouchableOpacity>
+                <Text>I</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.socialMediaIcon}>
+              <TouchableOpacity>
+                <Text>X</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.text}>@ 2024 EatMe</Text>
           </View>
         </View>
       </View>
@@ -126,5 +156,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     marginBottom: 10,
+  },
+  iconAndTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  text: {
+    color: '#585c5c',
+  },
+  socialMediaIconsContainer: {
+    flexDirection: 'row',
+  },
+  socialMediaIcon: {
+    marginRight: 10,
+    backgroundColor: 'white',
   },
 });

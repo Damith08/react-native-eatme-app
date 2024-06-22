@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderComponent from '../../components/HeaderComponent';
+import HeaderComponent from '../../components/Header';
 import {
   ScrollView,
   StyleSheet,
@@ -11,17 +11,11 @@ import {
 import Card from '../../components/Card';
 import FooterComponent from '../../components/FooterComponent';
 
-// import {NativeStackScreenProps} from '@react-navigation/native-stack';
-// import {RootStackPramList} from '../../App';
-
-// type LandingProps = NativeStackScreenProps<RootStackPramList, 'LandingScreen'>;
-
 const LandingScreen = () => {
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <HeaderComponent />
-      </View>
+      <HeaderComponent />
+
       <View style={styles.container}>
         <Text style={styles.text}>
           Restaurant food, takeaway and groceries. Delivered
