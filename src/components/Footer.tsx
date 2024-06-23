@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Svgs} from '../theme/Svgs';
 
-const FooterComponent = () => {
+const Footer = () => {
   return (
     <View style={styles.footerContainer}>
       <View style={styles.cardContainer}>
@@ -116,7 +116,7 @@ const FooterComponent = () => {
   );
 };
 
-export default FooterComponent;
+export default Footer;
 
 const styles = StyleSheet.create({
   footerContainer: {
