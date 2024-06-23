@@ -1,32 +1,33 @@
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AccountModal from './AccountModal';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../theme/Svgs';
+import {ROOT_STACK_SCREENS} from '../constants/NavigationConstants';
+import SquareButton from './SquareButton';
 
 const Header = () => {
   const navigation = useNavigation();
 
-  const handleOnPress = () => {
-    navigation.navigate('AuthLanding');
+  const authLandingHandler = () => {
+    navigation.navigate(ROOT_STACK_SCREENS.AUTH);
+  };
+
+  const landingScreenHandler = () => {
+    navigation.navigate(ROOT_STACK_SCREENS.LANDING_SCREEN);
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.imageSize}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('LandingScreen')}
-          style={{width: 100, height: 100}}>
-          <Svgs.Logo height={100} width={100} />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={landingScreenHandler}>
+        <Svgs.Logo height={70} width={90} />
+      </TouchableOpacity>
+
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleOnPress}>
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <SquareButton onPress={authLandingHandler} Icon={Svgs.Home} />
+        <View style={styles.button}>
           <AccountModal />
-        </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -38,20 +39,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  imageSize: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    marginLeft: 20,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 11,
   },
   button: {
-    marginRight: 20,
-  },
-  accountModal: {
-    backgroundColor: 'red',
+    marginRight: 10,
   },
 });
