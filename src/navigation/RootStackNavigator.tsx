@@ -6,6 +6,7 @@ import AuthLanding from '../features/auth/AuthLanding';
 import EmailLanding from '../features/auth/EmailLanding';
 import ForgetLanding from '../features/auth/ForgetLanding';
 import RegisterLanding from '../features/auth/RegisterLanding';
+import MenuScreen from '../features/home/MenuScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,10 @@ const RootStackNavigator = (): React.JSX.Element => {
       <Stack.Screen
         name={ROOT_STACK_SCREENS.REGISTER}
         component={RegisterLanding}
+      />
+      <Stack.Screen
+        name={ROOT_STACK_SCREENS.MENU_SCREEN}
+        component={MenuScreen}
       />
     </Stack.Navigator>
   );
