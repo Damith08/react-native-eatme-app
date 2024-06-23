@@ -1,14 +1,26 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import HeaderComponent from '../../components/Header';
-import FooterComponent from '../../components/FooterComponent';
+import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../../theme/Svgs';
+import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 
 function AuthLanding(): React.JSX.Element {
   const navigation = useNavigation();
+
+  const emailLandingHandler = () => {
+    navigation.navigate(ROOT_STACK_SCREENS.EMAIL);
+  };
+
   return (
-    <>
+    <ScrollView>
       <View style={styles.headerContainer}>
         <HeaderComponent />
       </View>
@@ -48,7 +60,7 @@ function AuthLanding(): React.JSX.Element {
         </View>
         <TouchableOpacity
           style={styles.emailButton}
-          onPress={() => navigation.navigate('EmailLanding')}>
+          onPress={emailLandingHandler}>
           <View style={styles.buttonContainer}>
             <Svgs.Email height={22} width={22} style={styles.icon} />
             <Text style={styles.whiteColoredButtonText}>
@@ -65,8 +77,8 @@ function AuthLanding(): React.JSX.Element {
           </Text>
         </View>
       </View>
-      <FooterComponent />
-    </>
+      <Footer />
+    </ScrollView>
   );
 }
 
