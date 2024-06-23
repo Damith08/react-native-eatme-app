@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import HeaderComponent from '../../components/Header';
-import FooterComponent from '../../components/FooterComponent';
+import Footer from '../../components/Footer';
 
 function ForgetLanding(): React.JSX.Element {
   return (
@@ -10,7 +10,7 @@ function ForgetLanding(): React.JSX.Element {
         <HeaderComponent />
       </View>
       <Text>Forget Password</Text>
-      <FooterComponent />
+      <Footer />
     </View>
   );
 }
