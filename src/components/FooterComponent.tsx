@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {Svgs} from '../theme/Svgs';
 
 const FooterComponent = () => {
   return (
@@ -80,36 +81,33 @@ const FooterComponent = () => {
         <View style={styles.card}>
           <View style={styles.cardContent}>
             <Text style={styles.cardTextHeading}>Take EatMe with you</Text>
-            <FlatList
-              scrollEnabled={false}
-              data={[{key: 'AppleStore Button'}, {key: 'GooglePlay Button'}]}
-              renderItem={({item}) => (
-                <TouchableOpacity>
-                  <Text style={styles.cardText}>{item.key}</Text>
-                </TouchableOpacity>
-              )}
-            />
+            <TouchableOpacity>
+              <Svgs.AppleStore height={135} width={135} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Svgs.PlayStore height={145} width={145} />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.iconAndTextContainer}>
           <View style={styles.socialMediaIconsContainer}>
-            <View style={styles.socialMediaIcon}>
+            <View style={styles.facebookIcon}>
               <TouchableOpacity>
-                <Text>F</Text>
+                <Svgs.Facebook height={40} width={40} />
               </TouchableOpacity>
             </View>
-            <View style={styles.socialMediaIcon}>
+            <View style={styles.InstagramIcon}>
               <TouchableOpacity>
-                <Text>I</Text>
+                <Svgs.Instagram height={48} width={48} fill="white" />
               </TouchableOpacity>
             </View>
-            <View style={styles.socialMediaIcon}>
+            <View style={styles.twitterIcon}>
               <TouchableOpacity>
-                <Text>X</Text>
+                <Svgs.Twitter height={40} width={40} fill="white" />
               </TouchableOpacity>
             </View>
           </View>
-          <View>
+          <View style={styles.copyrightText}>
             <Text style={styles.text}>@ 2024 EatMe</Text>
           </View>
         </View>
@@ -167,8 +165,18 @@ const styles = StyleSheet.create({
   socialMediaIconsContainer: {
     flexDirection: 'row',
   },
-  socialMediaIcon: {
+  facebookIcon: {
+    marginTop: 4,
     marginRight: 10,
-    backgroundColor: 'white',
+  },
+  InstagramIcon: {
+    marginRight: 10,
+  },
+  twitterIcon: {
+    marginTop: 4,
+    marginRight: 10,
+  },
+  copyrightText: {
+    marginTop: 15,
   },
 });
