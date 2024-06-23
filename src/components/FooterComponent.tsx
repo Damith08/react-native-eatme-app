@@ -93,17 +93,17 @@ const FooterComponent = () => {
           <View style={styles.socialMediaIconsContainer}>
             <View style={styles.facebookIcon}>
               <TouchableOpacity>
-                <Svgs.Facebook height={40} width={40} />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.InstagramIcon}>
-              <TouchableOpacity>
-                <Svgs.Instagram height={48} width={48} fill="white" />
+                <Svgs.Facebook height={25} width={25} />
               </TouchableOpacity>
             </View>
             <View style={styles.twitterIcon}>
               <TouchableOpacity>
-                <Svgs.Twitter height={40} width={40} fill="white" />
+                <Svgs.Twitter height={25} width={25} fill="white" />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.InstagramIcon}>
+              <TouchableOpacity>
+                <Svgs.Instagram height={30} width={30} fill="white" />
               </TouchableOpacity>
             </View>
           </View>
@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
   },
   socialMediaIconsContainer: {
     flexDirection: 'row',
+    marginTop: 14,
   },
   facebookIcon: {
     marginTop: 4,
@@ -171,12 +172,13 @@ const styles = StyleSheet.create({
   },
   InstagramIcon: {
     marginRight: 10,
+    marginTop: 1,
   },
   twitterIcon: {
     marginTop: 4,
     marginRight: 10,
   },
   copyrightText: {
-    marginTop: 15,
+    marginTop: 18,
   },
 });
