@@ -3,21 +3,25 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import HeaderComponent from '../../components/Header';
 import FooterComponent from '../../components/FooterComponent';
 import {useNavigation} from '@react-navigation/native';
+import {Svgs} from '../../theme/Svgs';
 
 function AuthLanding(): React.JSX.Element {
   const navigation = useNavigation();
   return (
     <>
       <View style={styles.headerContainer}>
-        <View style={styles.cardContent}>
-          <HeaderComponent />
-        </View>
+        <HeaderComponent />
       </View>
       <View style={styles.container}>
         <Text style={styles.textHeading}>Sign up or log in</Text>
         <TouchableOpacity style={styles.facebookButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.buttonIcon}>Fb</Text>
+            <Svgs.Facebook
+              height={25}
+              width={25}
+              fill={'white'}
+              style={styles.icon}
+            />
             <Text style={styles.whiteColoredButtonText}>
               Continue with Facebook
             </Text>
@@ -25,7 +29,7 @@ function AuthLanding(): React.JSX.Element {
         </TouchableOpacity>
         <TouchableOpacity style={styles.googleButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.buttonIcon}>G</Text>
+            <Svgs.Gmail height={20} width={20} style={styles.icon} />
             <Text style={styles.blackColoredButtonText}>
               Continue with Google
             </Text>
@@ -33,7 +37,7 @@ function AuthLanding(): React.JSX.Element {
         </TouchableOpacity>
         <TouchableOpacity style={styles.appleButton}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.buttonIcon}>App</Text>
+            <Svgs.Apple height={20} width={20} style={styles.icon} />
             <Text style={styles.whiteColoredButtonText}>
               Continue with Apple
             </Text>
@@ -46,7 +50,7 @@ function AuthLanding(): React.JSX.Element {
           style={styles.emailButton}
           onPress={() => navigation.navigate('EmailLanding')}>
           <View style={styles.buttonContainer}>
-            <Text style={styles.buttonIcon}>App</Text>
+            <Svgs.Email height={22} width={22} style={styles.icon} />
             <Text style={styles.whiteColoredButtonText}>
               Continue with Email
             </Text>
@@ -71,23 +75,8 @@ export default AuthLanding;
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: 'white',
-    paddingTop: 15,
-    paddingBottom: 15,
-    marginBottom: 10,
     shadowColor: '#333',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
-
-    // elevation: 5,
-  },
-  cardContent: {
-    // marginHorizontal: 10,
-    // marginVertical: 10,
+    borderBottomWidth: 0.25,
   },
   container: {
     marginLeft: 20,
@@ -96,6 +85,7 @@ const styles = StyleSheet.create({
   textHeading: {
     fontWeight: 'bold',
     fontSize: 24,
+    marginTop: 65,
     marginBottom: 10,
   },
   facebookButton: {
@@ -103,6 +93,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
