@@ -11,9 +11,12 @@ import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../../theme/Svgs';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/RootStackNavigator';
 
 function AuthLanding(): React.JSX.Element {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const emailLandingHandler = () => {
     navigation.navigate(ROOT_STACK_SCREENS.EMAIL);

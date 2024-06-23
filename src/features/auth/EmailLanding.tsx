@@ -11,9 +11,12 @@ import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/RootStackNavigator';
 
 const EmailLanding = (): React.JSX.Element => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const registerLandingHandler = () => {
     navigation.navigate(ROOT_STACK_SCREENS.REGISTER);

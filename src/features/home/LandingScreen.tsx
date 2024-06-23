@@ -14,9 +14,12 @@ import {Svgs} from '../../theme/Svgs';
 import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import DetailCard from '../../components/DetailCard';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/RootStackNavigator';
 
 const LandingScreen = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const authLandingHandler = () => {
     navigation.navigate(ROOT_STACK_SCREENS.AUTH);
   };

@@ -1,13 +1,7 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Modal,
-  Pressable,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {Svgs} from '../theme/Svgs';
 
 const AccountModal = () => {
   const navigation = useNavigation();
@@ -27,7 +21,7 @@ const AccountModal = () => {
                 <View style={styles.header}>
                   <TouchableOpacity
                     onPress={() => navigation.navigate('LandingScreen')}>
-                    <Text>EatMe Logo</Text>
+                    <Svgs.Logo height={90} width={90} />
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={() => setModalVisible(!modalVisible)}>
@@ -100,9 +94,13 @@ const AccountModal = () => {
           </View>
         </View>
       </Modal>
-      <Pressable onPress={() => setModalVisible(true)}>
-        <Text>Account</Text>
-      </Pressable>
+      <View style={styles.accountButton}>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <View style={styles.accountIcon}>
+            <Svgs.Account height={20} width={20} fill={'#E27A39'} />
+          </View>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
@@ -113,13 +111,22 @@ const styles = StyleSheet.create({
   container: {
     margin: 20,
   },
+  accountButton: {
+    borderRadius: 2,
+    marginRight: 20,
+    backgroundColor: 'white',
+    borderWidth: 0.25,
+    borderColor: 'grey',
+  },
+  accountIcon: {
+    padding: 10,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   card: {
     backgroundColor: 'white',
-    padding: 5,
     marginBottom: 10,
     shadowColor: '#333',
     shadowOffset: {
@@ -158,7 +165,6 @@ const styles = StyleSheet.create({
   optionTab: {
     backgroundColor: 'white',
     padding: 5,
-    // marginBottom: 10,
     shadowColor: '#333',
     shadowOffset: {
       width: 0,
