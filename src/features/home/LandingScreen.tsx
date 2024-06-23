@@ -9,8 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Card from '../../components/Card';
-import FooterComponent from '../../components/FooterComponent';
+import Footer from '../../components/Footer';
 import {Svgs} from '../../theme/Svgs';
 import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
@@ -139,7 +138,7 @@ const LandingScreen = () => {
         }}
         onPress={() => {}}
       />
-      <FooterComponent />
+      <Footer />
     </ScrollView>
   );
 };
