@@ -82,10 +82,10 @@ const Footer = () => {
           <View style={styles.cardContent}>
             <Text style={styles.cardTextHeading}>Take EatMe with you</Text>
             <TouchableOpacity>
-              <Svgs.AppleStore height={135} width={135} />
+              <Svgs.AppleStore width={135} />
             </TouchableOpacity>
             <TouchableOpacity>
-              <Svgs.PlayStore height={145} width={145} />
+              <Svgs.PlayStore width={135} />
             </TouchableOpacity>
           </View>
         </View>
