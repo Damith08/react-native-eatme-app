@@ -2,9 +2,13 @@ import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../theme/Svgs';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../navigation/RootStackNavigator';
+import {ROOT_STACK_SCREENS} from '../constants/NavigationConstants';
 
 const AccountModal = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -20,7 +24,9 @@ const AccountModal = () => {
               <View style={styles.cardContent}>
                 <View style={styles.header}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('LandingScreen')}>
+                    onPress={() =>
+                      navigation.navigate(ROOT_STACK_SCREENS.LANDING_SCREEN)
+                    }>
                     <Svgs.Logo height={90} width={90} />
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -33,7 +39,7 @@ const AccountModal = () => {
             <View style={styles.container}>
               <TouchableOpacity
                 style={styles.signupOrLoginButton}
-                onPress={() => navigation.navigate('AuthLanding')}>
+                onPress={() => navigation.navigate(ROOT_STACK_SCREENS.AUTH)}>
                 <Text style={styles.buttonText}>Sign up or log in </Text>
               </TouchableOpacity>
             </View>
