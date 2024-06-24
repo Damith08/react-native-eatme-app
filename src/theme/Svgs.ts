@@ -12,6 +12,12 @@ import MerchItemRow from '../assets/svgs/merch-itemrow.svg';
 import Gmail from '../assets/svgs/gmail.svg';
 import Apple from '../assets/svgs/apple.svg';
 import Email from '../assets/svgs/email.svg';
+import Close from '../assets/svgs/x-icon.svg';
+import Bicycle from '../assets/svgs/bicycle.svg';
+import Office from '../assets/svgs/office-building.svg';
+import Eat from '../assets/svgs/eat.svg';
+import QuestionMark from '../assets/svgs/question-mark-icon.svg';
+import Forward from '../assets/svgs/arrow-forward.svg';
 
 export const Svgs = {
   Logo,
@@ -28,4 +34,10 @@ export const Svgs = {
   Gmail,
   Apple,
   Email,
+  Close,
+  Bicycle,
+  Office,
+  Eat,
+  QuestionMark,
+  Forward,
 };
