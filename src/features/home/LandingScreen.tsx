@@ -27,7 +27,6 @@ const LandingScreen = () => {
   return (
     <ScrollView>
       <HeaderComponent />
-
       <View style={styles.container}>
         <Text style={styles.text}>
           Restaurant food, takeaway and groceries. Delivered
@@ -83,14 +82,15 @@ const LandingScreen = () => {
                 <Svgs.PlayStore height={145} width={145} />
               </TouchableOpacity>
             </View>
-            <Image
-              height={500}
-              width={322}
-              source={{
-                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt85bgXe0z4wUGVk_a0-8AvNOf1fa1RVbUzg&s',
-              }}
-            />
           </View>
+          <Image
+            height={500}
+            width={361}
+            source={{
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt85bgXe0z4wUGVk_a0-8AvNOf1fa1RVbUzg&s',
+            }}
+            style={styles.mapImage}
+          />
         </View>
       </View>
       <View style={styles.discountSection}>
@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
     borderRadius: 5,
-    padding: 10,
     marginBottom: 10,
     shadowColor: '#333',
     shadowOffset: {
@@ -174,6 +173,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   cardContent: {
+    padding: 10,
     marginHorizontal: 10,
     marginVertical: 10,
   },
@@ -192,6 +192,10 @@ const styles = StyleSheet.create({
   sendIcon: {
     marginTop: 10,
     marginLeft: 10,
+  },
+  mapImage: {
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
   },
   inputText: {
     flex: 2,

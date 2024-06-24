@@ -26,9 +26,11 @@ const DetailCard = ({onPress, title, description, source}: DetailCardProps) => {
       <View style={styles.descriptionContainer}>
         <Text style={styles.descriptionText}>{description}</Text>
       </View>
-      <TouchableOpacity onPress={onPress} style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Get started</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={onPress} style={styles.button}>
+          <Text style={styles.buttonText}>Get started</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -63,6 +65,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   buttonContainer: {
+    flexDirection: 'row',
+  },
+  button: {
     marginTop: 10,
     marginBottom: 10,
   },
