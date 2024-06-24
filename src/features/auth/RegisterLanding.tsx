@@ -34,7 +34,10 @@ const RegisterLanding = (): React.JSX.Element => {
         </View>
         <Text>Email</Text>
         <View style={styles.textInputContainer}>
-          <TextInput style={styles.textInput} placeholder="e.g. John Doe" />
+          <TextInput
+            style={styles.textInput}
+            placeholder="e.g.name@example.com"
+          />
         </View>
         <Text>Password</Text>
         <View style={styles.textInputContainer}>
@@ -62,6 +65,7 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 30,
   },
   textHeading: {
     fontWeight: 'bold',
