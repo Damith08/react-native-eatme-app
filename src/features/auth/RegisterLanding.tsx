@@ -279,6 +279,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: '#900',
+    marginBottom: 15,
   },
   errorInput: {
     borderWidth: 0.75,
