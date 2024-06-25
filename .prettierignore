@@ -1,0 +1,6 @@
+/.bundle
+/.husky
+/.yarn
+/android
+/ios
+/node_modules
