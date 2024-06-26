@@ -2,7 +2,6 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
@@ -13,14 +12,39 @@ import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
+import {Controller, SubmitHandler, useForm} from 'react-hook-form';
+import {LoginFormData} from '../../types/types';
+import {Colors} from '../../theme/Colors';
+import AppInput from '../../components/AppInput';
 
 const EmailLanding = (): React.JSX.Element => {
+  const {
+    control,
+    handleSubmit,
+    formState: {errors, isValid},
+  } = useForm<LoginFormData>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<LoginFormData> = data => {
+    console.log(data);
+    navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+  };
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const registerLandingHandler = () => {
     navigation.navigate(ROOT_STACK_SCREENS.REGISTER);
   };
+
+  const menuScreenLandingHandler = () => {
+    handleSubmit(onSubmit)();
+  };
+
   return (
     <ScrollView>
       <View style={styles.headerContainer}>
@@ -28,15 +52,74 @@ const EmailLanding = (): React.JSX.Element => {
       </View>
       <View style={styles.container}>
         <Text style={styles.textHeading}>Sign up or log in</Text>
-        <Text>Email address</Text>
-        <View style={styles.textInputContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="e.g.name@example.com"
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({field: {onChange, onBlur, value}}) => (
+            <>
+              <Text>Email address</Text>
+              <View
+                style={[
+                  styles.textInputContainer,
+                  errors.email && styles.errorInput,
+                ]}>
+                <AppInput
+                  placeholder="e.g. johndoe@gmail.com"
+                  value={value}
+                  onBlur={onBlur}
+                  onChange={onChange}
+                />
+              </View>
+            </>
+          )}
+          name="email"
+        />
+        {errors.email && (
+          <Text style={styles.errorText}>Email is required.</Text>
+        )}
+        <View>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <>
+                <Text>Password</Text>
+                <View
+                  style={[
+                    styles.textInputContainer,
+                    errors.email && styles.errorInput,
+                  ]}>
+                  <AppInput
+                    placeholder="enter your password"
+                    value={value}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    secure={true}
+                  />
+                </View>
+              </>
+            )}
+            name="password"
           />
+          {errors.password && (
+            <Text style={styles.errorText}>Password is required.</Text>
+          )}
         </View>
-        <TouchableOpacity style={styles.continueButton}>
-          <Text style={styles.continueButtonText}>Continue</Text>
+        <TouchableOpacity
+          style={[styles.continueButton, !isValid && styles.disabledButton]}
+          disabled={!isValid}
+          onPress={menuScreenLandingHandler}>
+          <Text
+            style={[
+              styles.continueButtonText,
+              !isValid && styles.disabledButtonText,
+            ]}>
+            Continue
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.forgetButton}>
           <Text style={styles.forgetButtonText}>Forgot password?</Text>
@@ -56,7 +139,7 @@ export default EmailLanding;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     shadowColor: '#333',
     borderBottomWidth: 0.25,
   },
@@ -72,16 +155,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textInputContainer: {
-    backgroundColor: 'white',
-    borderRadius: 5,
-    marginTop: 8,
-    marginBottom: 10,
+    // backgroundColor: Colors.backgroundPrimary,
+    // borderRadius: 5,
+    // marginTop: 8,
+    // marginBottom: 10,
   },
   textInput: {
     marginHorizontal: 15,
   },
   continueButton: {
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     marginTop: 10,
     marginBottom: 10,
     padding: 14,
@@ -89,12 +172,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   continueButtonText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontSize: 15,
     fontWeight: 'bold',
   },
   forgetButton: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     marginTop: 10,
     marginBottom: 10,
     padding: 14,
@@ -102,7 +185,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   forgetButtonText: {
-    color: '#E27A39',
+    color: Colors.eatMeColor,
     fontSize: 15,
+  },
+  errorText: {
+    color: Colors.error,
+    marginBottom: 15,
+  },
+  errorInput: {
+    borderWidth: 0.5,
+    borderColor: Colors.error,
+  },
+  disabledButton: {
+    backgroundColor: Colors.disableButtonColor,
+  },
+  disabledButtonText: {
+    color: Colors.disableButtonTextColor,
   },
 });
