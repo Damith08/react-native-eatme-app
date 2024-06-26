@@ -5,9 +5,12 @@ import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../theme/Svgs';
 import {ROOT_STACK_SCREENS} from '../constants/NavigationConstants';
 import SquareButton from './SquareButton';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../navigation/RootStackNavigator';
 
 const Header = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const authLandingHandler = () => {
     navigation.navigate(ROOT_STACK_SCREENS.AUTH);
