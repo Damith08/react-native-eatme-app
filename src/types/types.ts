@@ -1,10 +1,11 @@
 export type RegisterFormData = {
   firstName: string;
-  surname: string;
+  lastName: string;
+  username: string;
   email: string;
   password: string;
   address: string;
-  mobile: string;
+  contact: string;
 };
 
 export type LoginFormData = {
