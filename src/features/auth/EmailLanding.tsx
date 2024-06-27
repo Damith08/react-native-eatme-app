@@ -13,16 +13,26 @@ import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {Controller, SubmitHandler, useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import {LoginFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
+
+const schema = Yup.object().shape({
+  email: Yup.string().required('Email is required').email('Email is invalid'),
+  password: Yup.string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters'),
+});
 
 const EmailLanding = (): React.JSX.Element => {
   const {
     control,
     handleSubmit,
-    formState: {errors, isValid},
+    formState: {isValid},
   } = useForm<LoginFormData>({
+    resolver: yupResolver(schema),
     defaultValues: {
       email: '',
       password: '',
@@ -37,11 +47,11 @@ const EmailLanding = (): React.JSX.Element => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const registerLandingHandler = () => {
+  const handleOnPressRegister = () => {
     navigation.navigate(ROOT_STACK_SCREENS.REGISTER);
   };
 
-  const menuScreenLandingHandler = () => {
+  const handleOnPressContinue = () => {
     handleSubmit(onSubmit)();
   };
 
@@ -57,62 +67,45 @@ const EmailLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Email address</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.email && styles.errorInput,
-                ]}>
-                <AppInput
-                  placeholder="e.g. johndoe@gmail.com"
-                  value={value}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Email address"
+              placeholder="e.g. johndoe@gmail.com"
+              value={value}
+              onBlur={onBlur}
+              onChange={onChange}
+              error={error?.message}
+            />
           )}
           name="email"
         />
-        {errors.email && (
-          <Text style={styles.errorText}>Email is required.</Text>
-        )}
         <View>
           <Controller
             control={control}
             rules={{
               required: true,
             }}
-            render={({field: {onChange, onBlur, value}}) => (
-              <>
-                <Text>Password</Text>
-                <View
-                  style={[
-                    styles.textInputContainer,
-                    errors.email && styles.errorInput,
-                  ]}>
-                  <AppInput
-                    placeholder="enter your password"
-                    value={value}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    secure={true}
-                  />
-                </View>
-              </>
+            render={({
+              field: {onChange, onBlur, value},
+              fieldState: {error},
+            }) => (
+              <AppInput
+                placeholder="enter your password"
+                value={value}
+                onBlur={onBlur}
+                onChange={onChange}
+                secureTextEntry={true}
+                label="Password"
+                error={error?.message}
+              />
             )}
             name="password"
           />
-          {errors.password && (
-            <Text style={styles.errorText}>Password is required.</Text>
-          )}
         </View>
         <TouchableOpacity
           style={[styles.continueButton, !isValid && styles.disabledButton]}
           disabled={!isValid}
-          onPress={menuScreenLandingHandler}>
+          onPress={handleOnPressContinue}>
           <Text
             style={[
               styles.continueButtonText,
@@ -126,7 +119,7 @@ const EmailLanding = (): React.JSX.Element => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.continueButton}
-          onPress={registerLandingHandler}>
+          onPress={handleOnPressRegister}>
           <Text style={styles.continueButtonText}>Register</Text>
         </TouchableOpacity>
       </View>
@@ -153,12 +146,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginTop: 65,
     marginBottom: 10,
-  },
-  textInputContainer: {
-    // backgroundColor: Colors.backgroundPrimary,
-    // borderRadius: 5,
-    // marginTop: 8,
-    // marginBottom: 10,
   },
   textInput: {
     marginHorizontal: 15,
@@ -188,14 +175,7 @@ const styles = StyleSheet.create({
     color: Colors.eatMeColor,
     fontSize: 15,
   },
-  errorText: {
-    color: Colors.error,
-    marginBottom: 15,
-  },
-  errorInput: {
-    borderWidth: 0.5,
-    borderColor: Colors.error,
-  },
+
   disabledButton: {
     backgroundColor: Colors.disableButtonColor,
   },

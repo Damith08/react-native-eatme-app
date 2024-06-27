@@ -1,7 +1,6 @@
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
@@ -14,7 +13,27 @@ import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {useForm, Controller, SubmitHandler} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import {RegisterFormData} from '../../types/types';
+import {Colors} from '../../theme/Colors';
+import AppInput from '../../components/AppInput';
+
+const schema = Yup.object().shape({
+  firstName: Yup.string().required('First Name is required'),
+  surname: Yup.string().required('Surname is required'),
+  email: Yup.string()
+    .email('Email address is invalid')
+    .required('Email address is required'),
+  password: Yup.string()
+    .min(6, 'Password must be at least 6 characters long')
+    .required('Password is required'),
+  address: Yup.string().required('Address is required'),
+  mobile: Yup.string()
+    .required('Mobile Number is required')
+    .min(10, 'Mobile Number must be exactly 10 digits')
+    .max(10, 'Mobile Number must be exactly 10 digits'),
+});
 
 const RegisterLanding = (): React.JSX.Element => {
   const navigation =
@@ -24,13 +43,15 @@ const RegisterLanding = (): React.JSX.Element => {
     handleSubmit(onSubmit)();
   };
 
-  const {
-    control,
-    handleSubmit,
-    formState: {errors},
-  } = useForm<RegisterFormData>({
+  const {control, handleSubmit} = useForm<RegisterFormData>({
+    resolver: yupResolver(schema),
     defaultValues: {
       firstName: '',
+      surname: '',
+      email: '',
+      password: '',
+      address: '',
+      mobile: '',
     },
   });
   const onSubmit: SubmitHandler<RegisterFormData> = data => {
@@ -50,181 +71,112 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>First Name</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="e.g. John"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholderTextColor="#8f949d"
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="First Name"
+              placeholder="e.g. John"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+            />
           )}
           name="firstName"
         />
-        {errors.firstName && (
-          <Text style={styles.errorText}>First Name is required.</Text>
-        )}
 
         <Controller
           control={control}
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Surname</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="e.g. Doe"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholderTextColor="#8f949d"
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Surname"
+              placeholder="e.g. Doe"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+            />
           )}
           name="surname"
         />
-        {errors.surname && (
-          <Text style={styles.errorText}>Surname is required.</Text>
-        )}
+
         <Controller
           control={control}
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Location</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="e.g. Colombo"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholderTextColor="#8f949d"
-                />
-              </View>
-            </>
-          )}
-          name="location"
-        />
-        {errors.location && (
-          <Text style={styles.errorText}>Location is required.</Text>
-        )}
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Mobile Number</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="e.g. +94775983761"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  keyboardType="phone-pad"
-                  placeholderTextColor="#8f949d"
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Mobile Number"
+              placeholder="e.g. 0777888999"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+              keyboardType="number-pad"
+              maxLength={10}
+            />
           )}
           name="mobile"
         />
-        {errors.mobile && (
-          <Text style={styles.errorText}>Mobile Number is required.</Text>
-        )}
         <Controller
           control={control}
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Email</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="e.g. example@example.com"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholderTextColor="#8f949d"
-                  keyboardType="email-address"
-                  autoComplete="email"
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Address"
+              placeholder="e.g. 221B Baker Street"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+              keyboardType="default"
+            />
+          )}
+          name="address"
+        />
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Email address"
+              placeholder="e.g. johndoe@example.com"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+              keyboardType="email-address"
+            />
           )}
           name="email"
         />
-        {errors.email && (
-          <Text style={styles.errorText}>Mobile Number is required.</Text>
-        )}
+
         <Controller
           control={control}
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
-            <>
-              <Text>Password</Text>
-              <View
-                style={[
-                  styles.textInputContainer,
-                  errors.firstName && styles.errorInput,
-                ]}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="password"
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  placeholderTextColor="#8f949d"
-                  textContentType="password"
-                  secureTextEntry={true}
-                />
-              </View>
-            </>
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="Password"
+              placeholder="add your password here"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+              keyboardType="default"
+              secureTextEntry={true}
+            />
           )}
           name="password"
         />
-        {errors.password && (
-          <Text style={styles.errorText}>Password is required.</Text>
-        )}
         <TouchableOpacity
           style={styles.continueButton}
           onPress={menuScreenLandingHandler}>
@@ -240,7 +192,7 @@ export default RegisterLanding;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     shadowColor: '#333',
     borderBottomWidth: 0.25,
   },
@@ -256,7 +208,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textInputContainer: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     borderRadius: 5,
     marginTop: 8,
     marginBottom: 10,
@@ -265,7 +217,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   continueButton: {
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     marginTop: 10,
     marginBottom: 10,
     padding: 14,
@@ -273,16 +225,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   continueButtonText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontSize: 15,
     fontWeight: 'bold',
   },
   errorText: {
-    color: '#900',
+    color: Colors.error,
     marginBottom: 15,
   },
   errorInput: {
     borderWidth: 0.75,
-    borderColor: '#900',
+    borderColor: Colors.error,
   },
 });
