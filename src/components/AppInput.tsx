@@ -1,54 +1,56 @@
 import React from 'react';
-import {TextInput, StyleSheet, TextInputProps} from 'react-native';
+import {TextInput, StyleSheet, TextInputProps, Text} from 'react-native';
 import {Colors} from '../theme/Colors';
+import {View} from 'react-native-ui-lib';
 
 type AppInputProps = {
-  // label: string;
+  label: string;
   keyboardType?: TextInputProps['keyboardType'];
-  secure?: boolean;
-  // onUpdateValue: (text: string) => void;
+  secureTextEntry?: boolean;
   placeholder?: string;
   value: string;
-  isInvalid?: boolean;
   onBlur: () => void;
   onChange: (...event: unknown[]) => void;
+  error?: string;
+  maxLength?: number;
 };
 
 const AppInput: React.FC<AppInputProps> = ({
-  // label,
+  label,
   keyboardType = 'default',
-  secure = false,
+  secureTextEntry = false,
   placeholder,
   value,
-  isInvalid = false,
   onBlur,
   onChange,
+  error,
+  maxLength,
 }) => {
   return (
-    <TextInput
-      style={[styles.input, isInvalid && styles.inputInvalid]}
-      autoCapitalize="none"
-      placeholder={placeholder}
-      keyboardType={keyboardType}
-      secureTextEntry={secure}
-      onChangeText={onChange}
-      value={value}
-      onBlur={onBlur}
-      placeholderTextColor={Colors.placeholderTextColor}
-    />
+    <View>
+      <Text>{label}</Text>
+      <View style={[!!error && styles.errorInput]}>
+        <TextInput
+          style={styles.input}
+          autoCapitalize="none"
+          placeholder={placeholder}
+          keyboardType={keyboardType}
+          secureTextEntry={secureTextEntry}
+          onChangeText={onChange}
+          value={value}
+          onBlur={onBlur}
+          placeholderTextColor={Colors.placeholderTextColor}
+          maxLength={maxLength}
+        />
+      </View>
+      <Text style={styles.errorText}>{error}</Text>
+    </View>
   );
 };
 
 export default AppInput;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    // marginVertical: 8,
-  },
-  label: {
-    // color: Colors.placeholderTextColor,
-    // marginBottom: 4,
-  },
   labelInvalid: {
     color: Colors.error500,
   },
@@ -59,10 +61,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     fontSize: 16,
   },
-  inputInvalid: {
-    // backgroundColor: Colors.error100,
-    // paddingVertical: 8,
-    // paddingHorizontal: 6,
-    // borderRadius: 4,
+  errorInput: {
+    borderWidth: 0.5,
+    borderColor: Colors.error,
+  },
+  errorText: {
+    color: Colors.error,
+    marginBottom: 15,
   },
 });
