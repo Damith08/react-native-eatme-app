@@ -18,10 +18,12 @@ import * as Yup from 'yup';
 import {RegisterFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
+import axios from 'axios';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
-  surname: Yup.string().required('Surname is required'),
+  lastName: Yup.string().required('Last Name is required'),
+  username: Yup.string().required('Username is required'),
   email: Yup.string()
     .email('Email address is invalid')
     .required('Email address is required'),
@@ -29,10 +31,10 @@ const schema = Yup.object().shape({
     .min(6, 'Password must be at least 6 characters long')
     .required('Password is required'),
   address: Yup.string().required('Address is required'),
-  mobile: Yup.string()
-    .required('Mobile Number is required')
-    .min(10, 'Mobile Number must be exactly 10 digits')
-    .max(10, 'Mobile Number must be exactly 10 digits'),
+  contact: Yup.string()
+    .required('Contact Number is required')
+    .min(10, 'Contact Number must be exactly 10 digits')
+    .max(10, 'Contact Number must be exactly 10 digits'),
 });
 
 const RegisterLanding = (): React.JSX.Element => {
@@ -47,16 +49,25 @@ const RegisterLanding = (): React.JSX.Element => {
     resolver: yupResolver(schema),
     defaultValues: {
       firstName: '',
-      surname: '',
+      lastName: '',
+      username: '',
       email: '',
       password: '',
       address: '',
-      mobile: '',
+      contact: '',
     },
   });
-  const onSubmit: SubmitHandler<RegisterFormData> = data => {
-    console.log(data);
-    navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+  const onSubmit: SubmitHandler<RegisterFormData> = async data => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/auth/signup',
+        data,
+      );
+      console.log(response);
+      navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -91,7 +102,7 @@ const RegisterLanding = (): React.JSX.Element => {
           }}
           render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
             <AppInput
-              label="Surname"
+              label="Last Name"
               placeholder="e.g. Doe"
               value={value}
               onChange={onChange}
@@ -99,7 +110,25 @@ const RegisterLanding = (): React.JSX.Element => {
               error={error?.message}
             />
           )}
-          name="surname"
+          name="lastName"
+        />
+
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+            <AppInput
+              label="username"
+              placeholder="e.g. johndoe8"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              error={error?.message}
+            />
+          )}
+          name="username"
         />
 
         <Controller
@@ -119,7 +148,7 @@ const RegisterLanding = (): React.JSX.Element => {
               maxLength={10}
             />
           )}
-          name="mobile"
+          name="contact"
         />
         <Controller
           control={control}
