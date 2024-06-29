@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import React from 'react';
 import HeaderComponent from '../../components/Header';
@@ -18,7 +19,9 @@ import * as Yup from 'yup';
 import {RegisterFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
-import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppDispatch, RootState} from '../../store/store';
+import {registerUser} from '../../store/slices/registerSlice';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
@@ -41,6 +44,8 @@ const RegisterLanding = (): React.JSX.Element => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const menuScreenLandingHandler = () => {
     handleSubmit(onSubmit)();
   };
@@ -57,16 +62,12 @@ const RegisterLanding = (): React.JSX.Element => {
       contact: '',
     },
   });
+
+  const {loading, fail} = useSelector((state: RootState) => state.register);
   const onSubmit: SubmitHandler<RegisterFormData> = async data => {
-    try {
-      const response = await axios.post(
-        'http://localhost:3000/auth/signup',
-        data,
-      );
-      console.log(response);
+    await dispatch(registerUser(data));
+    if (!fail) {
       navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -209,7 +210,11 @@ const RegisterLanding = (): React.JSX.Element => {
         <TouchableOpacity
           style={styles.continueButton}
           onPress={menuScreenLandingHandler}>
-          <Text style={styles.continueButtonText}>Continue</Text>
+          {loading ? (
+            <ActivityIndicator size="small" color={Colors.backgroundPrimary} />
+          ) : (
+            <Text style={styles.continueButtonText}>Continue</Text>
+          )}
         </TouchableOpacity>
       </View>
       <Footer />
