@@ -66,6 +66,7 @@ const RegisterLanding = (): React.JSX.Element => {
   const {loading, fail} = useSelector((state: RootState) => state.register);
   const onSubmit: SubmitHandler<RegisterFormData> = async data => {
     await dispatch(registerUser(data));
+    console.log(data);
     if (!fail) {
       navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
     }
