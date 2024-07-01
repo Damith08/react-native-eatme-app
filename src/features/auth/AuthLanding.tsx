@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
@@ -13,12 +7,14 @@ import {Svgs} from '../../theme/Svgs';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
+import RegistrationButton from '../../components/RegistrationButton';
+import {Colors} from '../../theme/Colors';
 
 function AuthLanding(): React.JSX.Element {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const emailLandingHandler = () => {
+  const handleOnPressClickEmail = () => {
     navigation.navigate(ROOT_STACK_SCREENS.EMAIL);
   };
 
@@ -29,52 +25,54 @@ function AuthLanding(): React.JSX.Element {
       </View>
       <View style={styles.container}>
         <Text style={styles.textHeading}>Sign up or log in</Text>
-        <TouchableOpacity style={styles.facebookButton}>
-          <View style={styles.buttonContainer}>
-            <Svgs.Facebook
-              height={25}
-              width={25}
-              fill={'white'}
-              style={styles.icon}
-            />
-            <Text style={styles.whiteColoredButtonText}>
-              Continue with Facebook
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.googleButton}>
-          <View style={styles.buttonContainer}>
-            <Svgs.Gmail height={20} width={20} style={styles.icon} />
-            <Text style={styles.blackColoredButtonText}>
-              Continue with Google
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.appleButton}>
-          <View style={styles.buttonContainer}>
-            <Svgs.Apple height={20} width={20} style={styles.icon} />
-            <Text style={styles.whiteColoredButtonText}>
-              Continue with Apple
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <RegistrationButton
+          onPress={() => {}}
+          Icon={Svgs.Facebook}
+          height={25}
+          width={25}
+          fill="white"
+          buttonText="Continue with Facebook"
+          styleContainer={styles.facebookButton}
+          styleButtonContainer={styles.buttonContainer}
+          styleButtonTextColor={styles.whiteColoredButtonText}
+        />
+        <RegistrationButton
+          onPress={() => {}}
+          Icon={Svgs.Gmail}
+          height={20}
+          width={20}
+          buttonText="Continue with Google"
+          styleContainer={styles.googleButton}
+          styleButtonContainer={styles.buttonContainer}
+          styleButtonTextColor={styles.blackColoredButtonText}
+        />
+        <RegistrationButton
+          onPress={() => {}}
+          Icon={Svgs.Apple}
+          height={22}
+          width={22}
+          buttonText="Continue with Apple"
+          styleContainer={styles.appleButton}
+          styleButtonContainer={styles.buttonContainer}
+          styleButtonTextColor={styles.whiteColoredButtonText}
+        />
         <View style={styles.orTextContainer}>
           <Text>or</Text>
         </View>
-        <TouchableOpacity
-          style={styles.emailButton}
-          onPress={emailLandingHandler}>
-          <View style={styles.buttonContainer}>
-            <Svgs.Email height={22} width={22} style={styles.icon} />
-            <Text style={styles.whiteColoredButtonText}>
-              Continue with Email
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <RegistrationButton
+          onPress={handleOnPressClickEmail}
+          Icon={Svgs.Email}
+          height={22}
+          width={22}
+          buttonText="Continue with Google"
+          styleContainer={styles.emailButton}
+          styleButtonContainer={styles.buttonContainer}
+          styleButtonTextColor={styles.whiteColoredButtonText}
+        />
         <View>
           <Text style={styles.textContainer}>
             By continuing you agree to our T&Cs. Please also check out our
-            Privacy Policy. We use your data to offer you a personalised
+            Privacy Policy. We use your data to offer you a personalized
             experience and to better understand and improve our services. For
             more information see here.
           </Text>
@@ -89,7 +87,7 @@ export default AuthLanding;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     shadowColor: '#333',
     borderBottomWidth: 0.25,
   },
@@ -120,15 +118,15 @@ const styles = StyleSheet.create({
 
   buttonIcon: {
     marginRight: 10,
-    color: 'white',
+    color: Colors.backgroundPrimary,
   },
   whiteColoredButtonText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontWeight: 'bold',
     fontSize: 16,
   },
   googleButton: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     borderRadius: 5,
     marginTop: 10,
     marginBottom: 10,
@@ -152,7 +150,7 @@ const styles = StyleSheet.create({
   },
 
   emailButton: {
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     borderRadius: 5,
     marginTop: 10,
     marginBottom: 15,
