@@ -9,8 +9,7 @@ type AppInputProps = {
   secureTextEntry?: boolean;
   placeholder?: string;
   value: string;
-  onBlur: () => void;
-  onChange: (...event: unknown[]) => void;
+  onChangeText: (...event: unknown[]) => void;
   error?: string;
   maxLength?: number;
 };
@@ -21,8 +20,7 @@ const AppInput: React.FC<AppInputProps> = ({
   secureTextEntry = false,
   placeholder,
   value,
-  onBlur,
-  onChange,
+  onChangeText,
   error,
   maxLength,
 }) => {
@@ -36,9 +34,8 @@ const AppInput: React.FC<AppInputProps> = ({
           placeholder={placeholder}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry}
-          onChangeText={onChange}
+          onChangeText={onChangeText}
           value={value}
-          onBlur={onBlur}
           placeholderTextColor={Colors.placeholderTextColor}
           maxLength={maxLength}
         />
@@ -52,7 +49,7 @@ export default AppInput;
 
 const styles = StyleSheet.create({
   labelInvalid: {
-    color: Colors.error500,
+    color: Colors.error,
   },
   input: {
     paddingVertical: 11,
