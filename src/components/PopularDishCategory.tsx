@@ -30,7 +30,6 @@ export default PopularDishCategory;
 const styles = StyleSheet.create({
   rootContainer: {
     marginTop: 20,
-    marginBottom: 20,
     marginLeft: 25,
     marginRight: 25,
   },

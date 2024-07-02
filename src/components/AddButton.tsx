@@ -2,6 +2,7 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Svgs} from '../theme/Svgs';
 import {View} from 'react-native-ui-lib';
+import {Colors} from '../theme/Colors';
 
 const AddButton = () => {
   const handleOnPressAddDish = () => {};
@@ -10,8 +11,8 @@ const AddButton = () => {
     <TouchableOpacity
       style={styles.buttonContainer}
       onPress={handleOnPressAddDish}>
-      <View style={styles.addIcon}>
-        <Svgs.Add width={24} height={24} />
+      <View style={styles.addIconContainer}>
+        <Svgs.Add width={20} height={20} fill={Colors.placeholderTextColor} />
       </View>
     </TouchableOpacity>
   );
@@ -25,10 +26,12 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     marginTop: 10,
     marginBottom: 1,
+    flex: 1,
   },
-  addIcon: {
+  addIconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
   },
 });

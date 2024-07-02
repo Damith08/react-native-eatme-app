@@ -1,15 +1,18 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '../theme/Colors';
 import AddButton from './AddButton';
 import {Images} from '../theme/Images';
 
 const PopularDishCard = () => {
+  const handleOnPressSelectDish = () => {};
   return (
-    <View style={styles.rootContainer}>
+    <TouchableOpacity
+      style={styles.rootContainer}
+      onPress={handleOnPressSelectDish}>
       <View style={styles.card}>
         <Image
-          height={100}
+          height={110}
           width={110}
           source={{
             uri: Images.dishImage,
@@ -21,10 +24,12 @@ const PopularDishCard = () => {
             <Text>kcal</Text>
             <Text>Price</Text>
           </View>
-          <AddButton />
+          <View>
+            <AddButton />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
