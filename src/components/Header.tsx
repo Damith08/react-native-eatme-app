@@ -12,22 +12,25 @@ const Header = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const authLandingHandler = () => {
+  const handleOnPressAuthLandingScreen = () => {
     navigation.navigate(ROOT_STACK_SCREENS.AUTH);
   };
 
-  const landingScreenHandler = () => {
+  const handleOnPressHomeScreen = () => {
     navigation.navigate(ROOT_STACK_SCREENS.LANDING_SCREEN);
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={landingScreenHandler}>
+      <TouchableOpacity onPress={handleOnPressHomeScreen}>
         <Svgs.Logo height={70} width={90} />
       </TouchableOpacity>
 
       <View style={styles.buttonContainer}>
-        <SquareButton onPress={authLandingHandler} Icon={Svgs.Home} />
+        <SquareButton
+          onPress={handleOnPressAuthLandingScreen}
+          Icon={Svgs.Home}
+        />
         <View style={styles.button}>
           <AccountModal />
         </View>
