@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   addIcon: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 5,
   },
 });
