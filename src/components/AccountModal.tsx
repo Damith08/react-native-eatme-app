@@ -10,6 +10,7 @@ import {
   CountriesOptions,
   LanguagesOptions,
 } from '../constants/CountriesAndNumbers';
+import {Colors} from '../theme/Colors';
 
 const AccountModal = () => {
   const navigation =
@@ -39,7 +40,7 @@ const AccountModal = () => {
                 <Svgs.Close
                   height={30}
                   width={30}
-                  fill={'#E27A39'}
+                  fill={Colors.eatMeColor}
                   style={styles.closeIcon}
                 />
               </TouchableOpacity>
@@ -61,7 +62,11 @@ const AccountModal = () => {
                     <Text>Become a Rider</Text>
                   </View>
                   <View>
-                    <Svgs.Forward height={20} width={20} fill={'#E27A39'} />
+                    <Svgs.Forward
+                      height={20}
+                      width={20}
+                      fill={Colors.eatMeColor}
+                    />
                   </View>
                 </View>
               </View>
@@ -74,7 +79,11 @@ const AccountModal = () => {
                     <Text>Add your restaurant or store</Text>
                   </View>
                   <View>
-                    <Svgs.Forward height={20} width={20} fill={'#E27A39'} />
+                    <Svgs.Forward
+                      height={20}
+                      width={20}
+                      fill={Colors.eatMeColor}
+                    />
                   </View>
                 </View>
               </View>
@@ -87,7 +96,11 @@ const AccountModal = () => {
                     <Text>Sign up your office</Text>
                   </View>
                   <View>
-                    <Svgs.Forward height={20} width={20} fill={'#E27A39'} />
+                    <Svgs.Forward
+                      height={20}
+                      width={20}
+                      fill={Colors.eatMeColor}
+                    />
                   </View>
                 </View>
               </View>
@@ -104,7 +117,11 @@ const AccountModal = () => {
                     <Text>FAQs</Text>
                   </View>
                   <View>
-                    <Svgs.Forward height={20} width={20} fill={'#E27A39'} />
+                    <Svgs.Forward
+                      height={20}
+                      width={20}
+                      fill={Colors.eatMeColor}
+                    />
                   </View>
                 </View>
               </View>
@@ -143,7 +160,7 @@ const AccountModal = () => {
       <View style={styles.accountButton}>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <View style={styles.accountIcon}>
-            <Svgs.Account height={20} width={20} fill={'#E27A39'} />
+            <Svgs.Account height={20} width={20} fill={Colors.eatMeColor} />
           </View>
         </TouchableOpacity>
       </View>
@@ -163,7 +180,7 @@ const styles = StyleSheet.create({
   accountButton: {
     borderRadius: 2,
     marginRight: 20,
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     borderWidth: 0.25,
     borderColor: 'grey',
   },
@@ -175,9 +192,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     marginBottom: 10,
-    shadowColor: '#333',
+    shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -192,14 +209,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   signupOrLoginButton: {
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontWeight: '900',
     fontSize: 18,
   },
@@ -213,9 +230,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   optionTab: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     padding: 5,
-    shadowColor: '#333',
+    shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
       height: 2,
