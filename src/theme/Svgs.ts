@@ -22,6 +22,7 @@ import Info from '../assets/svgs/information.svg';
 import Star from '../assets/svgs/star.svg';
 import DeliveryBike from '../assets/svgs/fast-food-delivery.svg';
 import Happy from '../assets/svgs/Happy.svg';
+import Add from '../assets/svgs/add.svg';
 
 export const Svgs = {
   Logo,
@@ -48,4 +49,5 @@ export const Svgs = {
   Star,
   Info,
   Happy,
+  Add,
 };
