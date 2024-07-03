@@ -1,26 +1,30 @@
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 import React from 'react';
 import PopularDishCard from './PopularDishCard';
 import {View} from 'react-native-ui-lib';
+import {POPULAR_DISHES_DATA} from '../data/data';
 
 const PopularDishCategory = () => {
   return (
     <View style={styles.rootContainer}>
       <Text>Adults need around 2000 kcal a day</Text>
       <Text style={styles.categoryName}>Popular with other people</Text>
-      <ScrollView horizontal={true} style={styles.cardContainer}>
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-        <PopularDishCard />
-      </ScrollView>
+
+      <FlatList
+        horizontal
+        style={styles.cardContainer}
+        data={POPULAR_DISHES_DATA}
+        renderItem={({item}) => (
+          <ScrollView horizontal={true} style={styles.cardContainer}>
+            <PopularDishCard
+              dishImage={item.dishImage}
+              name={item.name}
+              kcal={item.kcal}
+              price={item.price}
+            />
+          </ScrollView>
+        )}
+      />
     </View>
   );
 };

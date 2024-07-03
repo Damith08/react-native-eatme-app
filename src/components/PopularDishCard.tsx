@@ -2,9 +2,20 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '../theme/Colors';
 import AddButton from './AddButton';
-import {Images} from '../theme/Images';
 
-const PopularDishCard = () => {
+type PopularDishCardProps = {
+  dishImage: string;
+  name: string;
+  kcal: string;
+  price: string;
+};
+
+const PopularDishCard = ({
+  dishImage,
+  name,
+  kcal,
+  price,
+}: PopularDishCardProps) => {
   const handleOnPressSelectDish = () => {};
   return (
     <TouchableOpacity
@@ -15,14 +26,14 @@ const PopularDishCard = () => {
           height={110}
           width={110}
           source={{
-            uri: Images.dishImage,
+            uri: dishImage,
           }}
         />
         <View style={styles.cardContent}>
-          <Text style={styles.dishName}>Dish Name</Text>
+          <Text style={styles.dishName}>{name}</Text>
           <View style={styles.dishDescriptionContainer}>
-            <Text>kcal</Text>
-            <Text>Price</Text>
+            <Text>{kcal}</Text>
+            <Text>{price}</Text>
           </View>
           <View>
             <AddButton />
@@ -40,6 +51,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginRight: 20,
+    maxWidth: 110,
+    maxHeight: 300,
   },
   card: {
     backgroundColor: Colors.backgroundPrimary,
