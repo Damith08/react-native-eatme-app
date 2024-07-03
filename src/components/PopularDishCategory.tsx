@@ -9,20 +9,22 @@ const PopularDishCategory = () => {
     <View style={styles.rootContainer}>
       <Text>Adults need around 2000 kcal a day</Text>
       <Text style={styles.categoryName}>Popular with other people</Text>
-
       <FlatList
         horizontal
         style={styles.cardContainer}
         data={POPULAR_DISHES_DATA}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
-          <ScrollView horizontal={true} style={styles.cardContainer}>
-            <PopularDishCard
-              dishImage={item.dishImage}
-              name={item.name}
-              kcal={item.kcal}
-              price={item.price}
-            />
-          </ScrollView>
+          <View style={styles.cardContainer}>
+            <ScrollView horizontal={true}>
+              <PopularDishCard
+                dishImage={item.dishImage}
+                name={item.name}
+                kcal={item.kcal}
+                price={item.price}
+              />
+            </ScrollView>
+          </View>
         )}
       />
     </View>

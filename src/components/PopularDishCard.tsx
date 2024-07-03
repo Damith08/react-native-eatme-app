@@ -23,8 +23,8 @@ const PopularDishCard = ({
       onPress={handleOnPressSelectDish}>
       <View style={styles.card}>
         <Image
-          height={110}
-          width={110}
+          height={140}
+          width={140}
           source={{
             uri: dishImage,
           }}
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginRight: 20,
-    maxWidth: 110,
-    maxHeight: 300,
+    maxWidth: 140,
+    // maxHeight: 300,
   },
   card: {
     backgroundColor: Colors.backgroundPrimary,
