@@ -1,17 +1,40 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-import DishCard from './DishCard';
+import DishDetailModal from './DishDetailModal';
+import {Colors} from '../theme/Colors';
 
-const RestaurantDishesCategory = () => {
+type Dishes = {
+  dishId: number;
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  kcal?: string;
+};
+
+type RestaurantDishesCategoryProps = {
+  categoryName: string;
+  dishes: Dishes[];
+};
+
+const RestaurantDishesCategory = ({
+  categoryName,
+  dishes,
+}: RestaurantDishesCategoryProps) => {
   return (
     <>
       <View style={styles.rootContainer}>
-        <Text style={styles.categoryName}>Category</Text>
+        <Text style={styles.categoryName}>{categoryName}</Text>
       </View>
-      <DishCard />
-      <DishCard />
-      <DishCard />
-      <DishCard />
+      <FlatList
+        data={dishes}
+        keyExtractor={item => item.dishId.toString()}
+        renderItem={({item}) => (
+          <View style={styles.categoryContainer}>
+            <DishDetailModal dish={item} />
+          </View>
+        )}
+      />
     </>
   );
 };
@@ -28,5 +51,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 20,
+  },
+  categoryContainer: {
+    marginBottom: 3,
+    backgroundColor: Colors.backgroundPrimary,
   },
 });
