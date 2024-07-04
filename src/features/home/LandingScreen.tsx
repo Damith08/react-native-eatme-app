@@ -17,6 +17,8 @@ import DetailCard from '../../components/DetailCard';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {CardComponent} from '../../constants/CardComponent';
+import {Colors} from '../../theme/Colors';
+import {Images} from '../../theme/Images';
 
 const LandingScreen = () => {
   const navigation =
@@ -42,12 +44,12 @@ const LandingScreen = () => {
             <View style={styles.searchBar}>
               <View style={styles.searchButtonComponent}>
                 <View style={styles.sendIcon}>
-                  <Svgs.Send height={20} width={20} fill={'#E27A39'} />
+                  <Svgs.Send height={20} width={20} fill={Colors.eatMeColor} />
                 </View>
                 <TextInput
                   style={styles.inputText}
                   placeholder="e.g. EC4R 3TE"
-                  placeholderTextColor="gray"
+                  placeholderTextColor={Colors.placeholderTextColor}
                 />
                 <TouchableOpacity style={styles.searchButton}>
                   <Text style={styles.searchButtonText}>Search</Text>
@@ -88,7 +90,7 @@ const LandingScreen = () => {
             height={500}
             width={361}
             source={{
-              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt85bgXe0z4wUGVk_a0-8AvNOf1fa1RVbUzg&s',
+              uri: Images.mapImage,
             }}
             style={styles.mapImage}
           />
@@ -137,10 +139,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     borderRadius: 5,
     marginBottom: 10,
-    shadowColor: '#333',
+    shadowColor: Colors.shadowColor,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   logInText: {
-    color: '#E27A39',
+    color: Colors.eatMeColor,
   },
   sendIcon: {
     marginTop: 10,
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     flex: 2,
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     height: 40,
     paddingTop: 10,
     paddingRight: 10,
@@ -188,12 +190,12 @@ const styles = StyleSheet.create({
   },
   searchButton: {
     alignItems: 'center',
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     borderRadius: 100,
   },
   searchButtonComponent: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: Colors.backgroundPrimary,
     borderWidth: 0.25,
     padding: 5,
     borderRadius: 50,
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   searchButtonText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontSize: 16,
     fontWeight: 'bold',
     margin: 8,
@@ -226,12 +228,12 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   discountSection: {
-    backgroundColor: '#E27A39',
+    backgroundColor: Colors.eatMeColor,
     marginTop: 10,
     marginBottom: 20,
   },
   discountHeading: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 53,
@@ -239,14 +241,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   discountText: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     fontSize: 20,
     alignItems: 'center',
     margin: 10,
     justifyContent: 'center',
   },
   discountTextSmall: {
-    color: 'white',
+    color: Colors.backgroundPrimary,
     margin: 10,
     justifyContent: 'center',
   },
