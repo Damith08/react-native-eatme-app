@@ -15,7 +15,7 @@ type Dish = {
   dishId: number;
   name: string;
   description: string;
-  price: string; // Ensure price is a string if that's how it's stored
+  price: string;
   image: string;
   kcal?: string;
 };
