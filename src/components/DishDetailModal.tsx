@@ -7,12 +7,24 @@ import {
   Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Images} from '../theme/Images';
 import AddButton from './AddButton';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 
-const DishDetailModal = () => {
+type Dish = {
+  dishId: number;
+  name: string;
+  description: string;
+  price: string; // Ensure price is a string if that's how it's stored
+  image: string;
+  kcal?: string;
+};
+
+type DishDetailModalProps = {
+  dish: Dish;
+};
+
+const DishDetailModal = ({dish}: DishDetailModalProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const handleOnPressCloseModal = () => {
     setModalVisible(!modalVisible);
@@ -37,14 +49,14 @@ const DishDetailModal = () => {
             <Image
               height={300}
               width={300}
-              source={{uri: Images.dishImage}}
+              source={{uri: dish.image}}
               style={styles.image}
             />
           </View>
           <View style={styles.singleDishDetailContent}>
-            <Text style={styles.dishName}>Dish Name</Text>
-            <Text>Dish Description</Text>
-            <Text>Dish Price</Text>
+            <Text style={styles.dishName}>{dish.name}</Text>
+            <Text>{dish.description}</Text>
+            <Text>{dish.price}</Text>
           </View>
           <TouchableOpacity
             style={styles.buttonContainer}
@@ -56,15 +68,15 @@ const DishDetailModal = () => {
       <TouchableOpacity onPress={handleOnPressOpenModal}>
         <View style={styles.categoryContent}>
           <View style={styles.dishDetailsContainer}>
-            <Text style={styles.dishName}>Dish Name</Text>
-            <Text>Dish Description</Text>
-            <Text>Dish Price</Text>
+            <Text style={styles.dishName}>{dish.name}</Text>
+            <Text>{dish.description}</Text>
+            <Text>{dish.price}</Text>
           </View>
           <View style={styles.imageContainer}>
             <Image
               height={110}
               width={110}
-              source={{uri: Images.dishImage}}
+              source={{uri: dish.image}}
               style={styles.image}
             />
           </View>
@@ -103,6 +115,7 @@ const styles = StyleSheet.create({
   dishDetailsContainer: {
     flex: 4,
     flexDirection: 'column',
+    marginRight: 10,
   },
   buttonContainer: {
     flex: 1,
