@@ -7,15 +7,23 @@ import PopularDishCategory from '../../components/PopularDishCategory';
 import RestaurantDishesCategory from '../../components/RestaurantDishesCategory';
 import {RESTAURANT_MENU_CATEGORY_DATA} from '../../data/data';
 import {View} from 'react-native-ui-lib';
+import HorizontalScrollBar from '../../components/HorizontalScrollBar';
 
 const MenuScreen = () => {
   return (
-    <ScrollView>
-      <Header />
-      <MenuRestaurantCard />
-      <PopularDishCategory />
+    <ScrollView StickyHeaderComponent={Header}>
       <View>
         <FlatList
+          ListHeaderComponent={
+            <>
+              <Header />
+              <MenuRestaurantCard />
+              <HorizontalScrollBar />
+              <PopularDishCategory />
+            </>
+          }
+          ListFooterComponent={<Footer />}
+          stickyHeaderIndices={[0]}
           scrollEnabled={false}
           data={RESTAURANT_MENU_CATEGORY_DATA}
           keyExtractor={item => item.id.toString()}
@@ -26,7 +34,6 @@ const MenuScreen = () => {
             />
           )}
         />
-        <Footer />
       </View>
     </ScrollView>
   );
