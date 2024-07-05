@@ -110,21 +110,6 @@ const MenuRestaurantCard = () => {
               </View>
             </TouchableOpacity>
           </View>
-          {/* <View style={styles.buttonContainer}>
-            <TouchableOpacity>
-              <View style={styles.button}>
-                <Svgs.DeliveryBike
-                  width={22}
-                  height={22}
-                  style={styles.svgIcon}
-                />
-                <View>
-                  <Text style={styles.locationText}>Location</Text>
-                </View>
-                <Text style={styles.changeText}>Change</Text>
-              </View>
-            </TouchableOpacity>
-          </View> */}
           <LocationChangeModal />
         </View>
       </View>
@@ -208,14 +193,5 @@ const styles = StyleSheet.create({
   forwardIcon: {
     justifyContent: 'center',
     marginLeft: 80,
-  },
-  locationText: {
-    color: Colors.eatMeColor,
-    marginTop: 11,
-  },
-  changeText: {
-    color: Colors.eatMeColor,
-    marginLeft: 200,
-    marginTop: 10,
   },
 });
