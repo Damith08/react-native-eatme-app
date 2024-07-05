@@ -32,6 +32,11 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
   const handleOnPressOpenModal = () => {
     setModalVisible(true);
   };
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+  };
   const handleOnPressAddDish = () => {};
 
   return (
@@ -56,6 +61,7 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
           <View style={styles.singleDishDetailContent}>
             <Text style={styles.dishName}>{dish.name}</Text>
             <Text>{dish.description}</Text>
+            {dish.kcal && <Text>{dish.kcal}</Text>}
             <Text>{dish.price}</Text>
           </View>
           <TouchableOpacity
@@ -69,7 +75,8 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
         <View style={styles.categoryContent}>
           <View style={styles.dishDetailsContainer}>
             <Text style={styles.dishName}>{dish.name}</Text>
-            <Text>{dish.description}</Text>
+            <Text>{truncateText(dish.description, 34)}</Text>
+            {dish.kcal && <Text>{dish.kcal}</Text>}
             <Text>{dish.price}</Text>
           </View>
           <View style={styles.imageContainer}>
