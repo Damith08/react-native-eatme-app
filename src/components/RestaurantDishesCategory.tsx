@@ -10,6 +10,7 @@ type Dishes = {
   price: string;
   image: string;
   kcal?: string;
+  popular?: string;
 };
 
 type RestaurantDishesCategoryProps = {

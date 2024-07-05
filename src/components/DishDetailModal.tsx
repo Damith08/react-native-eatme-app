@@ -18,6 +18,7 @@ type Dish = {
   price: string;
   image: string;
   kcal?: string;
+  popular?: string;
 };
 
 type DishDetailModalProps = {
@@ -77,7 +78,10 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
             <Text style={styles.dishName}>{dish.name}</Text>
             <Text>{truncateText(dish.description, 34)}</Text>
             {dish.kcal && <Text>{dish.kcal}</Text>}
-            <Text>{dish.price}</Text>
+            <View style={styles.priceNPopularTextContainer}>
+              <Text>{dish.price}</Text>
+              <Text style={styles.dishPopularText}>{dish.popular}</Text>
+            </View>
           </View>
           <View style={styles.imageContainer}>
             <Image
@@ -142,6 +146,13 @@ const styles = StyleSheet.create({
   dishName: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  priceNPopularTextContainer: {
+    flexDirection: 'row',
+  },
+  dishPopularText: {
+    color: Colors.eatMeColor,
+    marginLeft: 10,
   },
 });
 export default DishDetailModal;
