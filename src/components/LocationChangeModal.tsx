@@ -5,15 +5,21 @@ import {Colors} from '../theme/Colors';
 
 const LocationChangeModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const handleOnPressLocationConfirm = () => {};
+  const handleOnPressOpenLocationConfirmBox = () => {
+    setModalVisible(true);
+  };
+  const handleOnPressCloseLocationConfirmBox = () => {
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}>
+        onRequestClose={handleOnPressCloseLocationConfirmBox}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.locationConfirmContainer}>
@@ -29,13 +35,13 @@ const LocationChangeModal = () => {
               </View>
               <View>
                 <TouchableOpacity
-                  onPress={() => setModalVisible(!modalVisible)}>
+                  onPress={handleOnPressCloseLocationConfirmBox}>
                   <Svgs.Close height={25} width={25} fill={Colors.eatMeColor} />
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.locationConfirmButtonContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleOnPressLocationConfirm}>
                 <Text style={styles.locationConfirmButtonText}>Confirm</Text>
               </TouchableOpacity>
             </View>
@@ -43,7 +49,7 @@ const LocationChangeModal = () => {
         </View>
       </Modal>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <TouchableOpacity onPress={handleOnPressOpenLocationConfirmBox}>
           <View style={styles.button}>
             <View style={styles.iconNLocationText}>
               <Svgs.DeliveryBike
