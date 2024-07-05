@@ -16,9 +16,12 @@ const MenuRestaurantCard = () => {
       <View style={styles.coverPhotoContainer}>
         <ImageBackground
           resizeMode="cover"
-          height={300}
-          width={450}
           source={{uri: RESTAURANT_DATA.restaurantImage}}>
+          <View style={styles.backButtonContainer}>
+            <TouchableOpacity style={styles.backButton}>
+              <Svgs.Back height={25} width={25} fill={Colors.eatMeColor} />
+            </TouchableOpacity>
+          </View>
           <View style={styles.coverPhoto}>
             <View style={styles.groupOrderButtonContainer}>
               <TouchableOpacity style={styles.groupOrderButton}>
@@ -131,11 +134,20 @@ export default MenuRestaurantCard;
 
 const styles = StyleSheet.create({
   coverPhotoContainer: {
-    flex: 1,
     marginBottom: 10,
   },
+  backButtonContainer: {
+    alignItems: 'flex-start',
+  },
+  backButton: {
+    marginTop: 10,
+    backgroundColor: Colors.backgroundPrimary,
+    padding: 10,
+    borderRadius: 1000,
+    marginLeft: 20,
+  },
   coverPhoto: {
-    paddingTop: 220,
+    paddingTop: 200,
   },
   groupOrderButtonContainer: {
     alignItems: 'flex-end',

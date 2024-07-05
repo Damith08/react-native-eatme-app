@@ -18,6 +18,7 @@ import Office from '../assets/svgs/office-building.svg';
 import Eat from '../assets/svgs/eat.svg';
 import QuestionMark from '../assets/svgs/question-mark-icon.svg';
 import Forward from '../assets/svgs/arrow-forward.svg';
+import Back from '../assets/svgs/back-arrow.svg';
 import Info from '../assets/svgs/information.svg';
 import Star from '../assets/svgs/star.svg';
 import DeliveryBike from '../assets/svgs/fast-food-delivery.svg';
@@ -46,6 +47,7 @@ export const Svgs = {
   Eat,
   QuestionMark,
   Forward,
+  Back,
   DeliveryBike,
   Star,
   Info,
