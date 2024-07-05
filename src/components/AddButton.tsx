@@ -8,13 +8,13 @@ const AddButton = () => {
   const handleOnPressAddDish = () => {};
 
   return (
-    <TouchableOpacity
-      style={styles.buttonContainer}
-      onPress={handleOnPressAddDish}>
-      <View style={styles.addIconContainer}>
-        <Svgs.Add width={20} height={20} fill={Colors.placeholderTextColor} />
-      </View>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity onPress={handleOnPressAddDish}>
+        <View style={styles.addIconContainer}>
+          <Svgs.Add width={20} height={20} fill={Colors.placeholderTextColor} />
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     borderWidth: 0.25,
     borderRadius: 2,
     marginTop: 10,
-    marginBottom: 1,
+    // marginBottom: 1,
     flex: 1,
+    justifyContent: 'center',
   },
   addIconContainer: {
     justifyContent: 'center',
