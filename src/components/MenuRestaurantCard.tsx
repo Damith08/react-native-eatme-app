@@ -9,6 +9,7 @@ import React from 'react';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 import {RESTAURANT_DATA} from '../data/data';
+import LocationChangeModal from './LocationChangeModal';
 
 const MenuRestaurantCard = () => {
   return (
@@ -109,7 +110,7 @@ const MenuRestaurantCard = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={styles.buttonContainer}>
+          {/* <View style={styles.buttonContainer}>
             <TouchableOpacity>
               <View style={styles.button}>
                 <Svgs.DeliveryBike
@@ -123,7 +124,8 @@ const MenuRestaurantCard = () => {
                 <Text style={styles.changeText}>Change</Text>
               </View>
             </TouchableOpacity>
-          </View>
+          </View> */}
+          <LocationChangeModal />
         </View>
       </View>
     </>

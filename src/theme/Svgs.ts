@@ -25,6 +25,7 @@ import DeliveryBike from '../assets/svgs/fast-food-delivery.svg';
 import Happy from '../assets/svgs/Happy.svg';
 import Add from '../assets/svgs/add.svg';
 import Group from '../assets/svgs/group.svg';
+import Location from '../assets/svgs/location.svg';
 
 export const Svgs = {
   Logo,
@@ -54,4 +55,5 @@ export const Svgs = {
   Happy,
   Add,
   Group,
+  Location,
 };
