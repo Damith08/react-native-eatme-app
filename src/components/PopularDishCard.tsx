@@ -17,6 +17,12 @@ const PopularDishCard = ({
   price,
 }: PopularDishCardProps) => {
   const handleOnPressSelectDish = () => {};
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+  };
+
   return (
     <TouchableOpacity
       style={styles.rootContainer}
@@ -30,7 +36,7 @@ const PopularDishCard = ({
           }}
         />
         <View style={styles.cardContent}>
-          <Text style={styles.dishName}>{name}</Text>
+          <Text style={styles.dishName}>{truncateText(name, 27)}</Text>
           <View style={styles.dishDescriptionContainer}>
             <Text>{kcal}</Text>
             <Text>{price}</Text>
@@ -52,7 +58,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginRight: 20,
     maxWidth: 140,
-    // maxHeight: 300,
   },
   card: {
     backgroundColor: Colors.backgroundPrimary,
