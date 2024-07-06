@@ -23,20 +23,20 @@ const RestaurantDishesCategory = ({
   dishes,
 }: RestaurantDishesCategoryProps) => {
   return (
-    <>
-      <View style={styles.rootContainer}>
-        <Text style={styles.categoryName}>{categoryName}</Text>
-      </View>
-      <FlatList
-        data={dishes}
-        keyExtractor={item => item.dishId.toString()}
-        renderItem={({item}) => (
-          <View style={styles.categoryContainer}>
-            <DishDetailModal dish={item} />
-          </View>
-        )}
-      />
-    </>
+    <FlatList
+      ListHeaderComponent={
+        <View style={styles.rootContainer}>
+          <Text style={styles.categoryName}>{categoryName}</Text>
+        </View>
+      }
+      data={dishes}
+      keyExtractor={item => item.dishId.toString()}
+      renderItem={({item}) => (
+        <View style={styles.categoryContainer}>
+          <DishDetailModal dish={item} />
+        </View>
+      )}
+    />
   );
 };
 
