@@ -7,7 +7,7 @@ import {
   Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import AddButton from './AddButton';
+import AddButton from '../components/AddButton';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 

@@ -1,6 +1,6 @@
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import AccountModal from './AccountModal';
+import AccountModal from '../modals/AccountModal';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../theme/Svgs';
 import {ROOT_STACK_SCREENS} from '../constants/NavigationConstants';

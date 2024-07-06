@@ -9,7 +9,7 @@ import React from 'react';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 import {RESTAURANT_DATA} from '../data/data';
-import LocationChangeModal from './LocationChangeModal';
+import LocationChangeModal from '../modals/LocationChangeModal';
 
 const MenuRestaurantCard = () => {
   return (

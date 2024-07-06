@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-import DishDetailModal from './DishDetailModal';
+import DishDetailModal from '../modals/DishDetailModal';
 import {Colors} from '../theme/Colors';
 
 type Dishes = {
