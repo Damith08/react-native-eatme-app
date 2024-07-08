@@ -1,0 +1,18 @@
+export const FontFamily = {
+  BOLD: 'IBMPlexSans-Bold',
+  BOLD_ITALIC: 'IBMPlexSans-BoldItalic',
+  EXTRA_LIGHT: 'IBMPlexSans-ExtraLight',
+  EXTRA_LIGHT_ITALIC: 'IBMPlexSans-ExtraLightItalic',
+  LIGHT: 'IBMPlexSans-Light',
+  LIGHT_ITALIC: 'IBMPlexSans-LightItalic',
+  MEDIUM: 'IBMPlexSans-Medium',
+  MEDIUM_ITALIC: 'IBMPlexSans-MediumItalic',
+  SEMI_BOLD: 'IBMPlexSans-SemiBold',
+  SEMI_BOLD_ITALIC: 'IBMPlexSans-SemiBoldItalic',
+  THIN: 'IBMPlexSans-Thin',
+  THIN_ITALIC: 'IBMPlexSans-ThinItalic',
+  ITALIC: 'IBMPlexSans-Italic',
+  REGULAR: 'IBMPlexSans-Regular',
+  STRATOS_SEMI_BOLD: 'Stratos SemiBold',
+  STRATOS_EXTRA_BOLD: 'Stratos-ExtraBold',
+};
