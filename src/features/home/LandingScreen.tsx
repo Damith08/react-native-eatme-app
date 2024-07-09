@@ -19,6 +19,9 @@ import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {CardComponent} from '../../constants/CardComponent';
 import {Colors} from '../../theme/Colors';
 import {Images} from '../../theme/Images';
+import AppText from '../../components/AppText';
+import {FontFamily} from '../../theme/FontFamily';
+import {FontWeight} from '../../theme/FontWeight';
 
 const LandingScreen = () => {
   const navigation =
@@ -31,16 +34,19 @@ const LandingScreen = () => {
     <ScrollView>
       <HeaderComponent />
       <View style={styles.container}>
-        <Text style={styles.text}>
-          Restaurant food, takeaway and groceries. Delivered
-        </Text>
+        <AppText
+          fontFamily={FontFamily.BOLD}
+          fontSize={38}
+          weight={FontWeight.bold}>
+          {'Restaurant food, takeaway and groceries. Delivered'}
+        </AppText>
       </View>
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <View style={styles.searchComponentText1}>
-              <Text>Enter a postcode to see what we deliver:</Text>
-            </View>
+            <AppText fontFamily={FontFamily.REGULAR} fontSize={14}>
+              {'Enter a postcode to see what we deliver:'}
+            </AppText>
             <View style={styles.searchBar}>
               <View style={styles.searchButtonComponent}>
                 <View style={styles.sendIcon}>
@@ -58,9 +64,11 @@ const LandingScreen = () => {
             </View>
             <View style={styles.searchComponentText2}>
               <TouchableOpacity onPress={authLandingHandler}>
-                <Text style={styles.logInText}>Log in</Text>
+                <AppText color={Colors.eatMeColor} fontSize={14}>
+                  {'Log in'}
+                </AppText>
               </TouchableOpacity>
-              <Text> for your recent addresses</Text>
+              <AppText fontSize={14}>{' for your recent addresses'}</AppText>
             </View>
           </View>
         </View>
@@ -71,24 +79,29 @@ const LandingScreen = () => {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <Text style={styles.text}>Track orders to your door</Text>
-            <Text>
-              Get your favourite food delivered in a flash. You'll see when your
-              rider's pick up your order, and be able to follow them along the
-              way. You'll get a notification when they're nearby, too.
-            </Text>
+            <AppText fontFamily={FontFamily.BOLD} fontSize={34}>
+              {'Track orders to your door'}
+            </AppText>
+            <AppText
+              fontSize={14}
+              fontFamily={FontFamily.REGULAR}
+              textAlign={'justify'}>
+              {
+                "Get your favourite food delivered in a flash. You'll see when your rider's pick up your order, and be able to follow them along the way. You'll get a notification when they're nearby, too."
+              }
+            </AppText>
             <View style={styles.svgsButtonContainer}>
               <TouchableOpacity style={styles.appStoreIcon}>
-                <Svgs.AppStore height={135} width={135} />
+                <Svgs.AppStore height={60} width={135} />
               </TouchableOpacity>
               <TouchableOpacity>
-                <Svgs.PlayStore height={145} width={145} />
+                <Svgs.PlayStore height={71} width={145} />
               </TouchableOpacity>
             </View>
           </View>
           <Image
             height={500}
-            width={361}
+            width={373}
             source={{
               uri: Images.mapImage,
             }}
@@ -98,18 +111,34 @@ const LandingScreen = () => {
       </View>
       <View style={styles.discountSection}>
         <View style={styles.container}>
-          <Text style={styles.discountHeading}>Up to 25% off meal deals</Text>
-          <Text style={styles.discountText}>
-            Need a midweek pick-me-up, a break from cooking for the family or
-            just fancy your favourite restaurant?
-          </Text>
-          <Text style={styles.discountTextSmall}>
-            Subject to availability. Participating restaurant only.
-            Service/delivery fees apply.T&Cs
-          </Text>
+          <AppText
+            fontSize={35}
+            textAlign={'center'}
+            color={Colors.backgroundPrimary}
+            fontFamily={FontFamily.SEMI_BOLD}>
+            {'Up to 25% off meal deals'}
+          </AppText>
+          <AppText
+            fontSize={16}
+            fontFamily={FontFamily.REGULAR}
+            textAlign={'center'}
+            color={Colors.backgroundPrimary}>
+            {
+              'Need a midweek pick-me-up, a break from cooking for the family or just fancy your favourite restaurant?'
+            }
+          </AppText>
+          <AppText
+            fontFamily={FontFamily.REGULAR}
+            textAlign={'center'}
+            color={Colors.backgroundPrimary}
+            fontSize={12}>
+            {
+              'Subject to availability. Participating restaurant only. Service/delivery fees apply.T&Cs'
+            }
+          </AppText>
         </View>
         <View>
-          <Svgs.MerchItemRow height={70} width={600} />
+          <Svgs.MerchItemRow height={85} width={500} />
         </View>
       </View>
       {CardComponent.map(item => (
@@ -131,8 +160,8 @@ export default LandingScreen;
 const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
-    marginLeft: 25,
-    marginRight: 25,
+    marginLeft: 20,
+    marginRight: 20,
   },
   text: {
     fontSize: 38,
@@ -157,14 +186,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
   },
-  searchComponentText1: {
-    marginTop: 10,
-    marginBottom: 7,
-  },
   searchComponentText2: {
     flexDirection: 'row',
-    marginTop: 7,
-    marginBottom: 10,
   },
   logInText: {
     color: Colors.eatMeColor,
@@ -230,26 +253,7 @@ const styles = StyleSheet.create({
   discountSection: {
     backgroundColor: Colors.eatMeColor,
     marginTop: 10,
+    paddingTop: 40,
     marginBottom: 20,
-  },
-  discountHeading: {
-    color: Colors.backgroundPrimary,
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 53,
-    margin: 10,
-    justifyContent: 'center',
-  },
-  discountText: {
-    color: Colors.backgroundPrimary,
-    fontSize: 20,
-    alignItems: 'center',
-    margin: 10,
-    justifyContent: 'center',
-  },
-  discountTextSmall: {
-    color: Colors.backgroundPrimary,
-    margin: 10,
-    justifyContent: 'center',
   },
 });
