@@ -239,8 +239,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     margin: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   svgsButtonContainer: {
     flexDirection: 'row',
