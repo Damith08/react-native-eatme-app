@@ -1,7 +1,9 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import DishDetailModal from '../modals/DishDetailModal';
 import {Colors} from '../theme/Colors';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 type Dishes = {
   dishId: number;
@@ -26,7 +28,11 @@ const RestaurantDishesCategory = ({
     <FlatList
       ListHeaderComponent={
         <View style={styles.rootContainer}>
-          <Text style={styles.categoryName}>{categoryName}</Text>
+          <AppText
+            text={categoryName}
+            fontSize={20}
+            fontFamily={FontFamily.BOLD}
+          />
         </View>
       }
       data={dishes}
@@ -47,11 +53,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 25,
     marginRight: 25,
+    marginTop: 20,
   },
   categoryName: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 20,
   },
   categoryContainer: {
     marginBottom: 3,
