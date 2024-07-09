@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
@@ -9,6 +9,8 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
 import RegistrationButton from '../../components/RegistrationButton';
 import {Colors} from '../../theme/Colors';
+import AppText from '../../components/AppText';
+import {FontFamily} from '../../theme/FontFamily';
 
 function AuthLanding(): React.JSX.Element {
   const navigation =
@@ -24,7 +26,13 @@ function AuthLanding(): React.JSX.Element {
         <HeaderComponent />
       </View>
       <View style={styles.container}>
-        <Text style={styles.textHeading}>Sign up or log in</Text>
+        <View style={styles.textHeadingContainer}>
+          <AppText
+            text="Sign up or log in"
+            fontFamily={FontFamily.STRATOS_SEMI_BOLD}
+            fontSize={24}
+          />
+        </View>
         <RegistrationButton
           onPress={() => {}}
           Icon={Svgs.Facebook}
@@ -57,25 +65,28 @@ function AuthLanding(): React.JSX.Element {
           styleButtonTextColor={styles.whiteColoredButtonText}
         />
         <View style={styles.orTextContainer}>
-          <Text>or</Text>
+          <AppText text="or" />
         </View>
         <RegistrationButton
           onPress={handleOnPressClickEmail}
           Icon={Svgs.Email}
           height={22}
           width={22}
-          buttonText="Continue with Google"
+          buttonText="Continue with Email"
           styleContainer={styles.emailButton}
           styleButtonContainer={styles.buttonContainer}
           styleButtonTextColor={styles.whiteColoredButtonText}
         />
-        <View>
-          <Text style={styles.textContainer}>
-            By continuing you agree to our T&Cs. Please also check out our
+        <View style={styles.textContainer}>
+          <AppText
+            text="By continuing you agree to our T&Cs. Please also check out our
             Privacy Policy. We use your data to offer you a personalized
             experience and to better understand and improve our services. For
-            more information see here.
-          </Text>
+            more information see here."
+            fontFamily={FontFamily.STRATOS_REGULAR}
+            textAlign="justify"
+            fontSize={15}
+          />
         </View>
       </View>
       <Footer />
@@ -95,11 +106,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
   },
-  textHeading: {
-    fontWeight: 'bold',
-    fontSize: 24,
-    marginTop: 65,
-    marginBottom: 10,
+  textHeadingContainer: {
+    marginTop: 60,
+    marginBottom: 20,
   },
   facebookButton: {
     backgroundColor: '#4c69ba',
@@ -145,7 +154,6 @@ const styles = StyleSheet.create({
   },
   orTextContainer: {
     flexDirection: 'row',
-    marginTop: 20,
     justifyContent: 'center',
   },
 
@@ -156,7 +164,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   textContainer: {
-    textAlign: 'justify',
     marginBottom: 30,
   },
 });

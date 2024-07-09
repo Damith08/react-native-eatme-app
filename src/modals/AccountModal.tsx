@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity, Modal} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Svgs} from '../theme/Svgs';
@@ -11,6 +11,8 @@ import {
   LanguagesOptions,
 } from '../constants/CountriesAndNumbers';
 import {Colors} from '../theme/Colors';
+import AppText from '../components/AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 const AccountModal = () => {
   const navigation =
@@ -50,7 +52,12 @@ const AccountModal = () => {
             <TouchableOpacity
               style={styles.signupOrLoginButton}
               onPress={() => navigation.navigate(ROOT_STACK_SCREENS.AUTH)}>
-              <Text style={styles.buttonText}>Sign up or log in </Text>
+              <AppText
+                text="Sign up or log in"
+                fontFamily={FontFamily.BOLD}
+                fontSize={17}
+                color={Colors.backgroundPrimary}
+              />
             </TouchableOpacity>
           </View>
           <View>
@@ -59,7 +66,11 @@ const AccountModal = () => {
                 <View style={styles.optionRow}>
                   <View style={styles.iconNText}>
                     <Svgs.Bicycle height={25} width={25} style={styles.icon} />
-                    <Text>Become a Rider</Text>
+                    <AppText
+                      text="Become a Rider"
+                      fontSize={14}
+                      fontFamily={FontFamily.REGULAR}
+                    />
                   </View>
                   <View>
                     <Svgs.Forward
@@ -76,7 +87,11 @@ const AccountModal = () => {
                 <View style={styles.optionRow}>
                   <View style={styles.iconNText}>
                     <Svgs.Eat height={25} width={25} style={styles.icon} />
-                    <Text>Add your restaurant or store</Text>
+                    <AppText
+                      text="Add your restaurant or store"
+                      fontSize={14}
+                      fontFamily={FontFamily.REGULAR}
+                    />
                   </View>
                   <View>
                     <Svgs.Forward
@@ -93,7 +108,11 @@ const AccountModal = () => {
                 <View style={styles.optionRow}>
                   <View style={styles.iconNText}>
                     <Svgs.Office height={25} width={25} style={styles.icon} />
-                    <Text>Sign up your office</Text>
+                    <AppText
+                      text="Sign up your office"
+                      fontSize={14}
+                      fontFamily={FontFamily.REGULAR}
+                    />
                   </View>
                   <View>
                     <Svgs.Forward
@@ -114,7 +133,11 @@ const AccountModal = () => {
                       width={25}
                       style={styles.icon}
                     />
-                    <Text>FAQs</Text>
+                    <AppText
+                      text="FAQs"
+                      fontSize={14}
+                      fontFamily={FontFamily.REGULAR}
+                    />
                   </View>
                   <View>
                     <Svgs.Forward

@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/RootStackNavigator';
-import {Controller, SubmitHandler, useForm} from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {LoginFormData} from '../../types/types';
@@ -27,22 +27,13 @@ const schema = Yup.object().shape({
 });
 
 const EmailLanding = (): React.JSX.Element => {
-  const {
-    control,
-    handleSubmit,
-    formState: {isValid},
-  } = useForm<LoginFormData>({
+  const form = useForm<LoginFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
-
-  const onSubmit: SubmitHandler<LoginFormData> = data => {
-    console.log(data);
-    navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
-  };
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
@@ -51,9 +42,9 @@ const EmailLanding = (): React.JSX.Element => {
     navigation.navigate(ROOT_STACK_SCREENS.REGISTER);
   };
 
-  const handleOnPressContinue = () => {
-    handleSubmit(onSubmit)();
-  };
+  const handleOnPressContinue = form.handleSubmit((data: LoginFormData) => {
+    console.log(data);
+  });
 
   return (
     <ScrollView>
@@ -63,17 +54,16 @@ const EmailLanding = (): React.JSX.Element => {
       <View style={styles.container}>
         <Text style={styles.textHeading}>Sign up or log in</Text>
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Email address"
               placeholder="e.g. johndoe@gmail.com"
               value={value}
-              onBlur={onBlur}
-              onChange={onChange}
+              onChangeText={onChange}
               error={error?.message}
             />
           )}
@@ -81,19 +71,15 @@ const EmailLanding = (): React.JSX.Element => {
         />
         <View>
           <Controller
-            control={control}
+            control={form.control}
             rules={{
               required: true,
             }}
-            render={({
-              field: {onChange, onBlur, value},
-              fieldState: {error},
-            }) => (
+            render={({field: {onChange, value}, fieldState: {error}}) => (
               <AppInput
-                placeholder="enter your password"
+                placeholder="Enter your password"
                 value={value}
-                onBlur={onBlur}
-                onChange={onChange}
+                onChangeText={onChange}
                 secureTextEntry={true}
                 label="Password"
                 error={error?.message}
@@ -103,13 +89,16 @@ const EmailLanding = (): React.JSX.Element => {
           />
         </View>
         <TouchableOpacity
-          style={[styles.continueButton, !isValid && styles.disabledButton]}
-          disabled={!isValid}
+          style={[
+            styles.continueButton,
+            !form.formState.isValid && styles.disabledButton,
+          ]}
+          disabled={!form.formState.isValid}
           onPress={handleOnPressContinue}>
           <Text
             style={[
               styles.continueButtonText,
-              !isValid && styles.disabledButtonText,
+              !form.formState.isValid && styles.disabledButtonText,
             ]}>
             Continue
           </Text>
