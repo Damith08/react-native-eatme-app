@@ -9,7 +9,7 @@ type AppTextProps = TextProps & {
   fontFamily?: string;
   color?: string;
   textAlign?: 'justify' | 'center';
-  text: string;
+  text?: string;
 };
 
 const AppText = ({

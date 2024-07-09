@@ -1,15 +1,10 @@
-import {
-  View,
-  Text,
-  Modal,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {View, Modal, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React, {useState} from 'react';
 import AddButton from '../components/AddButton';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
+import AppText from '../components/AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 type Dish = {
   dishId: number;
@@ -60,10 +55,29 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
             />
           </View>
           <View style={styles.singleDishDetailContent}>
-            <Text style={styles.dishName}>{dish.name}</Text>
-            <Text>{dish.description}</Text>
-            {dish.kcal && <Text>{dish.kcal}</Text>}
-            <Text>{dish.price}</Text>
+            <AppText
+              text={dish.name}
+              fontFamily={FontFamily.BOLD}
+              fontSize={16}
+            />
+            <AppText
+              text={dish.description}
+              fontFamily={FontFamily.REGULAR}
+              textAlign="justify"
+              fontSize={14}
+            />
+            {dish.kcal && (
+              <AppText
+                text={dish.kcal}
+                fontFamily={FontFamily.REGULAR}
+                fontSize={14}
+              />
+            )}
+            <AppText
+              text={dish.price}
+              fontFamily={FontFamily.REGULAR}
+              fontSize={14}
+            />
           </View>
           <TouchableOpacity
             style={styles.buttonContainer}
@@ -75,12 +89,37 @@ const DishDetailModal = ({dish}: DishDetailModalProps) => {
       <TouchableOpacity onPress={handleOnPressOpenModal}>
         <View style={styles.categoryContent}>
           <View style={styles.dishDetailsContainer}>
-            <Text style={styles.dishName}>{dish.name}</Text>
-            <Text>{truncateText(dish.description, 34)}</Text>
-            {dish.kcal && <Text>{dish.kcal}</Text>}
+            <AppText
+              text={dish.name}
+              fontSize={16}
+              fontFamily={FontFamily.BOLD}
+            />
+            <AppText
+              text={truncateText(dish.description, 34)}
+              fontFamily={FontFamily.REGULAR}
+              fontSize={14}
+            />
+            {dish.kcal && (
+              <AppText
+                text={dish.kcal}
+                fontFamily={FontFamily.REGULAR}
+                fontSize={14}
+              />
+            )}
             <View style={styles.priceNPopularTextContainer}>
-              <Text>{dish.price}</Text>
-              <Text style={styles.dishPopularText}>{dish.popular}</Text>
+              <AppText
+                text={dish.price}
+                fontFamily={FontFamily.REGULAR}
+                fontSize={14}
+              />
+              <View style={styles.dishPopularText}>
+                <AppText
+                  text={dish.popular}
+                  fontFamily={FontFamily.REGULAR}
+                  fontSize={14}
+                  color={Colors.eatMeColor}
+                />
+              </View>
             </View>
           </View>
           <View style={styles.imageContainer}>
