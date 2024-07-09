@@ -28,6 +28,24 @@
 		1B681B4A44FB4513ABAD2045 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 448B91F63A6C4333A201E196 /* IBMPlexSans-SemiBoldItalic.ttf */; };
 		14BF979B5BAC46A395660B31 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2249969A9441CBB1A97FC6 /* IBMPlexSans-Thin.ttf */; };
 		1BFE5DEA2E234C6ABABBA191 /* IBMPlexSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B527F8AFF26442708F2D847D /* IBMPlexSans-ThinItalic.ttf */; };
+		F0B750BD5A51488FAB502EF7 /* stratos-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0013F42966A041E5BA773D35 /* stratos-black.otf */; };
+		FB641B8525874E87984D32C1 /* stratos-blackitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C881E65B33D466FA9632EB3 /* stratos-blackitalic.otf */; };
+		DAD06060762D428194B2F156 /* stratos-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4412F8D8F344B20A036C2CA /* stratos-bold.otf */; };
+		02B2E43EDAC54CD191A57655 /* stratos-bolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9661706EB3C844059A2BD8B0 /* stratos-bolditalic.otf */; };
+		56FED0E96ADB45EF87FEA1F5 /* stratos-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84E167DAA1884BC0B0FD036E /* stratos-extrabold.otf */; };
+		1BBA4280EB5C47F1BC2B4B9A /* stratos-extrabolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 557B935002F343D3A6C6D98F /* stratos-extrabolditalic.otf */; };
+		9C05D723363E47029D789962 /* stratos-extralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA0902CF28A49E3A6559522 /* stratos-extralight.otf */; };
+		1ED455F6CF9B44DBAC9B5DF0 /* stratos-extralightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D3CA584480DA44A5B608E7EF /* stratos-extralightitalic.otf */; };
+		7F822DC7C1A54524A9ABE79E /* stratos-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E64BC4F7E584115BA705FBE /* stratos-italic.otf */; };
+		A43B8054DBEF43DC876CF8DB /* stratos-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67D6604E787A4666AC8B8CF5 /* stratos-light.otf */; };
+		7BF8DA8528754A1EB1F50550 /* stratos-lightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8D7D124A42D246F2B4D384BB /* stratos-lightitalic.otf */; };
+		DECD453CAF744696A7D91D16 /* stratos-medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F93957072024EC88E28622C /* stratos-medium.otf */; };
+		8F6CCB26275F48F9B136BD4A /* stratos-mediumitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 011A3329FD37447FBCA2DCB2 /* stratos-mediumitalic.otf */; };
+		D068EB0C5CAB4C7EA36B6BC2 /* stratos-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A28DA084704642A1BA21F65E /* stratos-regular.otf */; };
+		F80F91DE7E1543F195F3C5C0 /* stratos-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7BEB5C55AD4543978A73517B /* stratos-semibold.otf */; };
+		5E4AC181188F44049A76FF62 /* stratos-semibolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1B602CCC41E144F999DFC496 /* stratos-semibolditalic.otf */; };
+		DBB8A30CD9AC4F1DAAE88E5D /* stratos-semilight.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD0F3A6182814043873DD0EF /* stratos-semilight.otf */; };
+		E93C0AED0A504D4598EC76CC /* stratos-semilightitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6FE2C9C8D1E24758A8B857E1 /* stratos-semilightitalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +91,24 @@
 		448B91F63A6C4333A201E196 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-SemiBoldItalic.ttf"; path = "../src/assets/fonts/IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		AD2249969A9441CBB1A97FC6 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-Thin.ttf"; path = "../src/assets/fonts/IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B527F8AFF26442708F2D847D /* IBMPlexSans-ThinItalic.ttf */ = {isa = PBXFileReference; name = "IBMPlexSans-ThinItalic.ttf"; path = "../src/assets/fonts/IBMPlexSans-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0013F42966A041E5BA773D35 /* stratos-black.otf */ = {isa = PBXFileReference; name = "stratos-black.otf"; path = "../src/assets/fonts/stratos-black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6C881E65B33D466FA9632EB3 /* stratos-blackitalic.otf */ = {isa = PBXFileReference; name = "stratos-blackitalic.otf"; path = "../src/assets/fonts/stratos-blackitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A4412F8D8F344B20A036C2CA /* stratos-bold.otf */ = {isa = PBXFileReference; name = "stratos-bold.otf"; path = "../src/assets/fonts/stratos-bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9661706EB3C844059A2BD8B0 /* stratos-bolditalic.otf */ = {isa = PBXFileReference; name = "stratos-bolditalic.otf"; path = "../src/assets/fonts/stratos-bolditalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		84E167DAA1884BC0B0FD036E /* stratos-extrabold.otf */ = {isa = PBXFileReference; name = "stratos-extrabold.otf"; path = "../src/assets/fonts/stratos-extrabold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		557B935002F343D3A6C6D98F /* stratos-extrabolditalic.otf */ = {isa = PBXFileReference; name = "stratos-extrabolditalic.otf"; path = "../src/assets/fonts/stratos-extrabolditalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8EA0902CF28A49E3A6559522 /* stratos-extralight.otf */ = {isa = PBXFileReference; name = "stratos-extralight.otf"; path = "../src/assets/fonts/stratos-extralight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3CA584480DA44A5B608E7EF /* stratos-extralightitalic.otf */ = {isa = PBXFileReference; name = "stratos-extralightitalic.otf"; path = "../src/assets/fonts/stratos-extralightitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6E64BC4F7E584115BA705FBE /* stratos-italic.otf */ = {isa = PBXFileReference; name = "stratos-italic.otf"; path = "../src/assets/fonts/stratos-italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67D6604E787A4666AC8B8CF5 /* stratos-light.otf */ = {isa = PBXFileReference; name = "stratos-light.otf"; path = "../src/assets/fonts/stratos-light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8D7D124A42D246F2B4D384BB /* stratos-lightitalic.otf */ = {isa = PBXFileReference; name = "stratos-lightitalic.otf"; path = "../src/assets/fonts/stratos-lightitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F93957072024EC88E28622C /* stratos-medium.otf */ = {isa = PBXFileReference; name = "stratos-medium.otf"; path = "../src/assets/fonts/stratos-medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		011A3329FD37447FBCA2DCB2 /* stratos-mediumitalic.otf */ = {isa = PBXFileReference; name = "stratos-mediumitalic.otf"; path = "../src/assets/fonts/stratos-mediumitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A28DA084704642A1BA21F65E /* stratos-regular.otf */ = {isa = PBXFileReference; name = "stratos-regular.otf"; path = "../src/assets/fonts/stratos-regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7BEB5C55AD4543978A73517B /* stratos-semibold.otf */ = {isa = PBXFileReference; name = "stratos-semibold.otf"; path = "../src/assets/fonts/stratos-semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1B602CCC41E144F999DFC496 /* stratos-semibolditalic.otf */ = {isa = PBXFileReference; name = "stratos-semibolditalic.otf"; path = "../src/assets/fonts/stratos-semibolditalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD0F3A6182814043873DD0EF /* stratos-semilight.otf */ = {isa = PBXFileReference; name = "stratos-semilight.otf"; path = "../src/assets/fonts/stratos-semilight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6FE2C9C8D1E24758A8B857E1 /* stratos-semilightitalic.otf */ = {isa = PBXFileReference; name = "stratos-semilightitalic.otf"; path = "../src/assets/fonts/stratos-semilightitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +232,24 @@
 				448B91F63A6C4333A201E196 /* IBMPlexSans-SemiBoldItalic.ttf */,
 				AD2249969A9441CBB1A97FC6 /* IBMPlexSans-Thin.ttf */,
 				B527F8AFF26442708F2D847D /* IBMPlexSans-ThinItalic.ttf */,
+				0013F42966A041E5BA773D35 /* stratos-black.otf */,
+				6C881E65B33D466FA9632EB3 /* stratos-blackitalic.otf */,
+				A4412F8D8F344B20A036C2CA /* stratos-bold.otf */,
+				9661706EB3C844059A2BD8B0 /* stratos-bolditalic.otf */,
+				84E167DAA1884BC0B0FD036E /* stratos-extrabold.otf */,
+				557B935002F343D3A6C6D98F /* stratos-extrabolditalic.otf */,
+				8EA0902CF28A49E3A6559522 /* stratos-extralight.otf */,
+				D3CA584480DA44A5B608E7EF /* stratos-extralightitalic.otf */,
+				6E64BC4F7E584115BA705FBE /* stratos-italic.otf */,
+				67D6604E787A4666AC8B8CF5 /* stratos-light.otf */,
+				8D7D124A42D246F2B4D384BB /* stratos-lightitalic.otf */,
+				9F93957072024EC88E28622C /* stratos-medium.otf */,
+				011A3329FD37447FBCA2DCB2 /* stratos-mediumitalic.otf */,
+				A28DA084704642A1BA21F65E /* stratos-regular.otf */,
+				7BEB5C55AD4543978A73517B /* stratos-semibold.otf */,
+				1B602CCC41E144F999DFC496 /* stratos-semibolditalic.otf */,
+				DD0F3A6182814043873DD0EF /* stratos-semilight.otf */,
+				6FE2C9C8D1E24758A8B857E1 /* stratos-semilightitalic.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -310,6 +364,24 @@
 				1B681B4A44FB4513ABAD2045 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */,
 				14BF979B5BAC46A395660B31 /* IBMPlexSans-Thin.ttf in Resources */,
 				1BFE5DEA2E234C6ABABBA191 /* IBMPlexSans-ThinItalic.ttf in Resources */,
+				F0B750BD5A51488FAB502EF7 /* stratos-black.otf in Resources */,
+				FB641B8525874E87984D32C1 /* stratos-blackitalic.otf in Resources */,
+				DAD06060762D428194B2F156 /* stratos-bold.otf in Resources */,
+				02B2E43EDAC54CD191A57655 /* stratos-bolditalic.otf in Resources */,
+				56FED0E96ADB45EF87FEA1F5 /* stratos-extrabold.otf in Resources */,
+				1BBA4280EB5C47F1BC2B4B9A /* stratos-extrabolditalic.otf in Resources */,
+				9C05D723363E47029D789962 /* stratos-extralight.otf in Resources */,
+				1ED455F6CF9B44DBAC9B5DF0 /* stratos-extralightitalic.otf in Resources */,
+				7F822DC7C1A54524A9ABE79E /* stratos-italic.otf in Resources */,
+				A43B8054DBEF43DC876CF8DB /* stratos-light.otf in Resources */,
+				7BF8DA8528754A1EB1F50550 /* stratos-lightitalic.otf in Resources */,
+				DECD453CAF744696A7D91D16 /* stratos-medium.otf in Resources */,
+				8F6CCB26275F48F9B136BD4A /* stratos-mediumitalic.otf in Resources */,
+				D068EB0C5CAB4C7EA36B6BC2 /* stratos-regular.otf in Resources */,
+				F80F91DE7E1543F195F3C5C0 /* stratos-semibold.otf in Resources */,
+				5E4AC181188F44049A76FF62 /* stratos-semibolditalic.otf in Resources */,
+				DBB8A30CD9AC4F1DAAE88E5D /* stratos-semilight.otf in Resources */,
+				E93C0AED0A504D4598EC76CC /* stratos-semilightitalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

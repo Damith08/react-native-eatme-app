@@ -63,6 +63,24 @@
 		<string>IBMPlexSans-SemiBoldItalic.ttf</string>
 		<string>IBMPlexSans-Thin.ttf</string>
 		<string>IBMPlexSans-ThinItalic.ttf</string>
+		<string>stratos-black.otf</string>
+		<string>stratos-blackitalic.otf</string>
+		<string>stratos-bold.otf</string>
+		<string>stratos-bolditalic.otf</string>
+		<string>stratos-extrabold.otf</string>
+		<string>stratos-extrabolditalic.otf</string>
+		<string>stratos-extralight.otf</string>
+		<string>stratos-extralightitalic.otf</string>
+		<string>stratos-italic.otf</string>
+		<string>stratos-light.otf</string>
+		<string>stratos-lightitalic.otf</string>
+		<string>stratos-medium.otf</string>
+		<string>stratos-mediumitalic.otf</string>
+		<string>stratos-regular.otf</string>
+		<string>stratos-semibold.otf</string>
+		<string>stratos-semibolditalic.otf</string>
+		<string>stratos-semilight.otf</string>
+		<string>stratos-semilightitalic.otf</string>
 	</array>
 </dict>
 </plist>
