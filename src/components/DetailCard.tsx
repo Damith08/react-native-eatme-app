@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   TouchableOpacity,
   Image,
   GestureResponderEvent,
@@ -8,6 +7,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import React from 'react';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
+import {Colors} from '../theme/Colors';
 
 type DetailCardProps = {
   onPress: ((event: GestureResponderEvent) => void) | undefined;
@@ -21,14 +23,19 @@ const DetailCard = ({onPress, title, description, source}: DetailCardProps) => {
     <View style={styles.detailCardContainer}>
       <Image source={source} style={styles.image} />
       <View style={styles.headingTextContainer}>
-        <Text style={styles.headingText}>{title}</Text>
+        <AppText fontSize={25} fontFamily={FontFamily.SEMI_BOLD} text={title} />
       </View>
       <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionText}>{description}</Text>
+        <AppText text={description} fontSize={15} textAlign="justify" />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={onPress} style={styles.button}>
-          <Text style={styles.buttonText}>Get started</Text>
+          <AppText
+            text="Get started"
+            fontSize={17}
+            fontFamily={FontFamily.BOLD}
+            color={Colors.backgroundPrimary}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -70,14 +77,15 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 10,
     marginBottom: 10,
+    paddingTop: 10,
+    paddingBottom: 15,
+    paddingHorizontal: 25,
+    backgroundColor: '#E27A39',
+    borderRadius: 3,
   },
   buttonText: {
-    backgroundColor: '#E27A39',
     fontWeight: 'bold',
     fontSize: 17,
     color: 'white',
-    padding: 18,
-    flexWrap: 'nowrap',
-    borderRadius: 10,
   },
 });
