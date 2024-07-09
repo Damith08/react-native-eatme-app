@@ -9,6 +9,7 @@ type AppTextProps = TextProps & {
   fontFamily?: string;
   color?: string;
   textAlign?: 'justify' | 'center';
+  text: string;
 };
 
 const AppText = ({
@@ -17,7 +18,7 @@ const AppText = ({
   weight,
   fontSize,
   textAlign,
-  ...props
+  text,
 }: AppTextProps) => {
   return (
     <View style={styles.rootContainer}>
@@ -29,7 +30,7 @@ const AppText = ({
           color: color,
           textAlign: textAlign,
         }}>
-        {props.children}
+        {text}
       </Text>
     </View>
   );
