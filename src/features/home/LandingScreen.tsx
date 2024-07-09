@@ -37,16 +37,18 @@ const LandingScreen = () => {
         <AppText
           fontFamily={FontFamily.BOLD}
           fontSize={38}
-          weight={FontWeight.bold}>
-          {'Restaurant food, takeaway and groceries. Delivered'}
-        </AppText>
+          weight={FontWeight.bold}
+          text="Restaurant food, takeaway and groceries. Delivered"
+        />
       </View>
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <AppText fontFamily={FontFamily.REGULAR} fontSize={14}>
-              {'Enter a postcode to see what we deliver:'}
-            </AppText>
+            <AppText
+              text="Enter a postcode to see what we deliver:"
+              fontFamily={FontFamily.REGULAR}
+              fontSize={14}
+            />
             <View style={styles.searchBar}>
               <View style={styles.searchButtonComponent}>
                 <View style={styles.sendIcon}>
@@ -64,11 +66,13 @@ const LandingScreen = () => {
             </View>
             <View style={styles.searchComponentText2}>
               <TouchableOpacity onPress={authLandingHandler}>
-                <AppText color={Colors.eatMeColor} fontSize={14}>
-                  {'Log in'}
-                </AppText>
+                <AppText
+                  text="Log in"
+                  color={Colors.eatMeColor}
+                  fontSize={14}
+                />
               </TouchableOpacity>
-              <AppText fontSize={14}>{' for your recent addresses'}</AppText>
+              <AppText text=" for your recent addresses" fontSize={14} />
             </View>
           </View>
         </View>
@@ -79,17 +83,17 @@ const LandingScreen = () => {
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.cardContent}>
-            <AppText fontFamily={FontFamily.BOLD} fontSize={34}>
-              {'Track orders to your door'}
-            </AppText>
             <AppText
+              text="Track orders to your door"
+              fontFamily={FontFamily.BOLD}
+              fontSize={34}
+            />
+            <AppText
+              text="Get your favourite food delivered in a flash. You'll see when your rider's pick up your order, and be able to follow them along the way. You'll get a notification when they're nearby, too."
               fontSize={14}
               fontFamily={FontFamily.REGULAR}
-              textAlign={'justify'}>
-              {
-                "Get your favourite food delivered in a flash. You'll see when your rider's pick up your order, and be able to follow them along the way. You'll get a notification when they're nearby, too."
-              }
-            </AppText>
+              textAlign={'justify'}
+            />
             <View style={styles.svgsButtonContainer}>
               <TouchableOpacity style={styles.appStoreIcon}>
                 <Svgs.AppStore height={60} width={135} />
@@ -112,30 +116,26 @@ const LandingScreen = () => {
       <View style={styles.discountSection}>
         <View style={styles.container}>
           <AppText
+            text="Up to 25% off meal deals"
             fontSize={35}
             textAlign={'center'}
             color={Colors.backgroundPrimary}
-            fontFamily={FontFamily.SEMI_BOLD}>
-            {'Up to 25% off meal deals'}
-          </AppText>
+            fontFamily={FontFamily.SEMI_BOLD}
+          />
           <AppText
+            text="Need a midweek pick-me-up, a break from cooking for the family or just fancy your favourite restaurant?"
             fontSize={16}
             fontFamily={FontFamily.REGULAR}
             textAlign={'center'}
-            color={Colors.backgroundPrimary}>
-            {
-              'Need a midweek pick-me-up, a break from cooking for the family or just fancy your favourite restaurant?'
-            }
-          </AppText>
+            color={Colors.backgroundPrimary}
+          />
           <AppText
             fontFamily={FontFamily.REGULAR}
             textAlign={'center'}
             color={Colors.backgroundPrimary}
-            fontSize={12}>
-            {
-              'Subject to availability. Participating restaurant only. Service/delivery fees apply.T&Cs'
-            }
-          </AppText>
+            fontSize={12}
+            text="Subject to availability. Participating restaurant only. Service/delivery fees apply.T&Cs"
+          />
         </View>
         <View>
           <Svgs.MerchItemRow height={85} width={500} />
