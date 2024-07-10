@@ -11,7 +11,7 @@ import MenuScreen from '../features/home/MenuScreen';
 export type RootStackParams = {
   [ROOT_STACK_SCREENS.AUTH]: undefined;
   [ROOT_STACK_SCREENS.EMAIL]: undefined;
-  [ROOT_STACK_SCREENS.FORGET]: undefined;
+  [ROOT_STACK_SCREENS.FORGET_EMAIL]: undefined;
   [ROOT_STACK_SCREENS.LANDING_SCREEN]: undefined;
   [ROOT_STACK_SCREENS.MENU_SCREEN]: undefined;
   [ROOT_STACK_SCREENS.REGISTER]: undefined;
@@ -29,7 +29,7 @@ const RootStackNavigator = (): React.JSX.Element => {
       <Stack.Screen name={ROOT_STACK_SCREENS.AUTH} component={AuthLanding} />
       <Stack.Screen name={ROOT_STACK_SCREENS.EMAIL} component={EmailLanding} />
       <Stack.Screen
-        name={ROOT_STACK_SCREENS.FORGET}
+        name={ROOT_STACK_SCREENS.FORGET_EMAIL}
         component={ForgetLanding}
       />
       <Stack.Screen

@@ -3,6 +3,6 @@ export enum ROOT_STACK_SCREENS {
   MENU_SCREEN = 'MenuScreen',
   AUTH = 'AuthLanding',
   EMAIL = 'EmailLanding',
-  FORGET = 'ForgetLanding',
+  FORGET_EMAIL = 'ForgetLanding',
   REGISTER = 'RegisterLanding',
 }

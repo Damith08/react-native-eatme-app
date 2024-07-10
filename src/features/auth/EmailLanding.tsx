@@ -18,6 +18,8 @@ import * as Yup from 'yup';
 import {LoginFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
+import AppText from '../../components/AppText';
+import {FontFamily} from '../../theme/FontFamily';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -45,6 +47,10 @@ const EmailLanding = (): React.JSX.Element => {
   const handleOnPressContinue = form.handleSubmit((data: LoginFormData) => {
     console.log(data);
   });
+
+  const handleOnPressForgetPassword = () => {
+    navigation.navigate(ROOT_STACK_SCREENS.FORGET_EMAIL);
+  };
 
   return (
     <ScrollView>
@@ -103,8 +109,15 @@ const EmailLanding = (): React.JSX.Element => {
             Continue
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.forgetButton}>
-          <Text style={styles.forgetButtonText}>Forgot password?</Text>
+        <TouchableOpacity
+          style={styles.forgetButton}
+          onPress={handleOnPressForgetPassword}>
+          <AppText
+            text="Forgot password?"
+            fontFamily={FontFamily.REGULAR}
+            fontSize={15}
+            color={Colors.eatMeColor}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.continueButton}
@@ -160,11 +173,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
   },
-  forgetButtonText: {
-    color: Colors.eatMeColor,
-    fontSize: 15,
-  },
-
   disabledButton: {
     backgroundColor: Colors.disableButtonColor,
   },
