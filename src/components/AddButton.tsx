@@ -25,13 +25,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.25,
     borderRadius: 2,
     marginTop: 10,
-    flex: 1,
+    padding: 10,
     justifyContent: 'center',
   },
   addIconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 8,
   },
 });
