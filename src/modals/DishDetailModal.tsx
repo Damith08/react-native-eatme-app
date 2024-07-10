@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginRight: 10,
-    flex: 3,
+    marginTop: 10,
   },
   image: {
     borderRadius: 4,
