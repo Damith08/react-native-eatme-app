@@ -1,14 +1,26 @@
-import {Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+import {StyleSheet, ScrollView, FlatList} from 'react-native';
 import React from 'react';
 import PopularDishCard from './PopularDishCard';
 import {View} from 'react-native-ui-lib';
 import {POPULAR_DISHES_DATA} from '../data/data';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 const PopularDishCategory = () => {
   return (
     <View style={styles.rootContainer}>
-      <Text>Adults need around 2000 kcal a day</Text>
-      <Text style={styles.categoryName}>Popular with other people</Text>
+      <AppText
+        text="Adults need around 2000 kcal a day"
+        fontFamily={FontFamily.REGULAR}
+        fontSize={14}
+      />
+      <View style={styles.categoryName}>
+        <AppText
+          text="Popular with other people"
+          fontFamily={FontFamily.BOLD}
+          fontSize={20}
+        />
+      </View>
       <FlatList
         horizontal
         style={styles.cardContainer}
@@ -44,8 +56,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   categoryName: {
-    fontSize: 20,
-    fontWeight: 'bold',
     marginTop: 20,
   },
 });

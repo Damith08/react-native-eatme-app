@@ -1,7 +1,9 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '../theme/Colors';
 import AddButton from './AddButton';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 type PopularDishCardProps = {
   dishImage: string;
@@ -36,10 +38,22 @@ const PopularDishCard = ({
           }}
         />
         <View style={styles.cardContent}>
-          <Text style={styles.dishName}>{truncateText(name, 27)}</Text>
+          <AppText
+            text={truncateText(name, 25)}
+            fontFamily={FontFamily.BOLD}
+            fontSize={16}
+          />
           <View style={styles.dishDescriptionContainer}>
-            <Text>{kcal}</Text>
-            <Text>{price}</Text>
+            <AppText
+              text={kcal}
+              fontFamily={FontFamily.REGULAR}
+              fontSize={14}
+            />
+            <AppText
+              text={price}
+              fontFamily={FontFamily.REGULAR}
+              fontSize={14}
+            />
           </View>
           <View>
             <AddButton />

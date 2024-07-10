@@ -1,7 +1,9 @@
-import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {RESTAURANT_MENU_CATEGORY_DATA} from '../data/data';
 import {Colors} from '../theme/Colors';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 const HorizontalScrollBar = () => {
   return (
@@ -14,7 +16,12 @@ const HorizontalScrollBar = () => {
           <View style={styles.scrollBarContainer}>
             <View>
               <TouchableOpacity style={styles.scrollBarChips}>
-                <Text style={styles.scrollBarText}>{item.categoryName}</Text>
+                <AppText
+                  text={item.categoryName}
+                  fontFamily={FontFamily.SEMI_BOLD}
+                  fontSize={14}
+                  color={Colors.backgroundPrimary}
+                />
               </TouchableOpacity>
             </View>
           </View>
