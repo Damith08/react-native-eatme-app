@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
@@ -10,6 +9,8 @@ import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 import {RESTAURANT_DATA} from '../data/data';
 import LocationChangeModal from '../modals/LocationChangeModal';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 const MenuRestaurantCard = () => {
   return (
@@ -27,9 +28,9 @@ const MenuRestaurantCard = () => {
             <View style={styles.groupOrderButtonContainer}>
               <TouchableOpacity style={styles.groupOrderButton}>
                 <Svgs.Group height={20} width={20} fill={Colors.eatMeColor} />
-                <Text style={styles.groupOrderButtonText}>
-                  Start group order
-                </Text>
+                <View style={styles.groupOrderButtonText}>
+                  <AppText text="Start group order" />
+                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -37,37 +38,71 @@ const MenuRestaurantCard = () => {
       </View>
       <View style={styles.rootContainer}>
         <View style={styles.container}>
-          <Text style={styles.restaurantName}>
-            {RESTAURANT_DATA.restaurantName} - {RESTAURANT_DATA.address}
-          </Text>
+          <AppText
+            text={
+              `${RESTAURANT_DATA.restaurantName}` +
+              ` - ` +
+              `${RESTAURANT_DATA.address}`
+            }
+            fontSize={28}
+            fontFamily={FontFamily.BOLD}
+          />
           {RESTAURANT_DATA.tagLine.map(item => (
             <View key={item.tag} style={styles.dishesTagLineContainer}>
-              <Text key={item.dish1} style={styles.taglineText}>
-                {item.dish1}
-              </Text>
-              <Text key={item.dish2} style={styles.taglineText}>
-                .{item.dish2}
-              </Text>
-              <Text key={item.tag} style={styles.taglineText}>
-                .{item.tag}
-              </Text>
+              <View style={styles.taglineText}>
+                <AppText
+                  id={item.dish1}
+                  text={item.dish1}
+                  fontFamily={FontFamily.REGULAR}
+                />
+              </View>
+              <View style={styles.taglineText}>
+                <AppText
+                  id={item.dish2}
+                  text={item.dish2}
+                  fontFamily={FontFamily.REGULAR}
+                />
+              </View>
+              <View style={styles.taglineText}>
+                <AppText
+                  id={item.tag}
+                  text={item.tag}
+                  fontFamily={FontFamily.REGULAR}
+                />
+              </View>
             </View>
           ))}
 
           <View style={styles.basicDetailsContainer}>
-            <Text style={styles.taglineText}>
-              Opens at {RESTAURANT_DATA.opensAt}
-            </Text>
-            <Text style={styles.taglineText}>{RESTAURANT_DATA.minimum}</Text>
-            <Text style={styles.taglineText}>{RESTAURANT_DATA.delivery}</Text>
+            <View style={styles.taglineText}>
+              <AppText
+                text={'Opens at ' + `${RESTAURANT_DATA.opensAt}`}
+                fontFamily={FontFamily.REGULAR}
+              />
+            </View>
+            <View style={styles.taglineText}>
+              <AppText
+                text={RESTAURANT_DATA.minimum}
+                fontFamily={FontFamily.REGULAR}
+              />
+            </View>
+            <View style={styles.taglineText}>
+              <AppText
+                text={RESTAURANT_DATA.delivery}
+                fontFamily={FontFamily.REGULAR}
+              />
+            </View>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity>
               <View style={styles.button}>
                 <Svgs.Info width={25} height={25} style={styles.svgIcon} />
                 <View>
-                  <Text>Info</Text>
-                  <Text>Map, allergens and hygiene rating</Text>
+                  <AppText text="Info" fontFamily={FontFamily.REGULAR} />
+                  <AppText
+                    text="Map, allergens and hygiene rating"
+                    fontFamily={FontFamily.REGULAR}
+                  />
                 </View>
                 <View style={styles.forwardIcon}>
                   <Svgs.Forward
@@ -89,15 +124,21 @@ const MenuRestaurantCard = () => {
                   fill={Colors.success}
                 />
                 <View>
-                  <Text>4.7 Excellent (500+)</Text>
+                  <AppText
+                    text="4.7 Excellent (500+)"
+                    fontFamily={FontFamily.REGULAR}
+                  />
                   <View style={styles.ratingContainer}>
                     <Svgs.Happy
                       width={20}
-                      height={20}
+                      height={22}
                       fill={Colors.success}
                       style={styles.ratingSvg}
                     />
-                    <Text>'Tasty food'</Text>
+                    <AppText
+                      text="'Tasty food'"
+                      fontFamily={FontFamily.REGULAR}
+                    />
                   </View>
                 </View>
                 <View style={styles.forwardIcon}>
