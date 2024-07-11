@@ -2,6 +2,8 @@ import React from 'react';
 import {TextInput, StyleSheet, TextInputProps, Text} from 'react-native';
 import {Colors} from '../theme/Colors';
 import {View} from 'react-native-ui-lib';
+import AppText from './AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 type AppInputProps = {
   label: string;
@@ -26,7 +28,7 @@ const AppInput: React.FC<AppInputProps> = ({
 }) => {
   return (
     <View>
-      <Text>{label}</Text>
+      <AppText text={label} fontFamily={FontFamily.REGULAR} fontSize={14} />
       <View style={[!!error && styles.errorInput]}>
         <TextInput
           style={styles.input}
