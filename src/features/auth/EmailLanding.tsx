@@ -165,18 +165,4 @@ const styles = StyleSheet.create({
   textInput: {
     marginHorizontal: 15,
   },
-  forgetButton: {
-    backgroundColor: Colors.backgroundPrimary,
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 14,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  disabledButton: {
-    backgroundColor: Colors.disableButtonColor,
-  },
-  disabledButtonText: {
-    color: Colors.disableButtonTextColor,
-  },
 });
