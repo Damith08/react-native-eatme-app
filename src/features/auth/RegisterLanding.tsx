@@ -21,7 +21,9 @@ import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../store/store';
-import {registerUser} from '../../store/slices/registerSlice';
+import {registerUser} from '../../store/slices/authSlice';
+import AppText from '../../components/AppText';
+import {FontFamily} from '../../theme/FontFamily';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
@@ -63,7 +65,7 @@ const RegisterLanding = (): React.JSX.Element => {
     },
   });
 
-  const {loading, fail} = useSelector((state: RootState) => state.register);
+  const {loading, fail} = useSelector((state: RootState) => state.auth);
   const onSubmit: SubmitHandler<RegisterFormData> = async data => {
     await dispatch(registerUser(data));
     console.log(data);
@@ -84,13 +86,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="First Name"
               placeholder="e.g. John"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
             />
           )}
@@ -102,13 +103,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Last Name"
               placeholder="e.g. Doe"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
             />
           )}
@@ -120,13 +120,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="username"
               placeholder="e.g. johndoe8"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
             />
           )}
@@ -138,13 +137,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Mobile Number"
               placeholder="e.g. 0777888999"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
               keyboardType="number-pad"
               maxLength={10}
@@ -157,13 +155,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Address"
               placeholder="e.g. 221B Baker Street"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
               keyboardType="default"
             />
@@ -175,13 +172,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Email address"
               placeholder="e.g. johndoe@example.com"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
               keyboardType="email-address"
             />
@@ -194,13 +190,12 @@ const RegisterLanding = (): React.JSX.Element => {
           rules={{
             required: true,
           }}
-          render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
               label="Password"
-              placeholder="add your password here"
+              placeholder="Type your password here"
               value={value}
-              onChange={onChange}
-              onBlur={onBlur}
+              onChangeText={onChange}
               error={error?.message}
               keyboardType="default"
               secureTextEntry={true}
@@ -214,7 +209,12 @@ const RegisterLanding = (): React.JSX.Element => {
           {loading ? (
             <ActivityIndicator size="small" color={Colors.backgroundPrimary} />
           ) : (
-            <Text style={styles.continueButtonText}>Continue</Text>
+            <AppText
+              text="Continue"
+              fontSize={16}
+              color={Colors.backgroundPrimary}
+              fontFamily={FontFamily.SEMI_BOLD}
+            />
           )}
         </TouchableOpacity>
       </View>
