@@ -1,7 +1,9 @@
-import {View, Text, Modal, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Modal, TouchableOpacity, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
+import AppText from '../components/AppText';
+import {FontFamily} from '../theme/FontFamily';
 
 const LocationChangeModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,9 +31,14 @@ const LocationChangeModal = () => {
                   width={25}
                   fill={Colors.placeholderTextColor}
                 />
-                <Text style={styles.locationConfirmText}>
-                  No location selected
-                </Text>
+                <View style={styles.locationConfirmText}>
+                  <AppText
+                    text="No location selected"
+                    fontFamily={FontFamily.REGULAR}
+                    color={Colors.error}
+                    fontSize={16}
+                  />
+                </View>
               </View>
               <View>
                 <TouchableOpacity
@@ -42,7 +49,12 @@ const LocationChangeModal = () => {
             </View>
             <View style={styles.locationConfirmButtonContainer}>
               <TouchableOpacity onPress={handleOnPressLocationConfirm}>
-                <Text style={styles.locationConfirmButtonText}>Confirm</Text>
+                <AppText
+                  text="Confirm"
+                  fontFamily={FontFamily.SEMI_BOLD}
+                  fontSize={16}
+                  color={Colors.backgroundPrimary}
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -57,9 +69,23 @@ const LocationChangeModal = () => {
                 height={22}
                 style={styles.svgIcon}
               />
-              <Text style={styles.locationText}>No location selected</Text>
+              <View style={styles.locationText}>
+                <AppText
+                  text="No location selected"
+                  fontFamily={FontFamily.REGULAR}
+                  color={Colors.error}
+                  fontSize={16}
+                />
+              </View>
             </View>
-            <Text style={styles.changeText}>Change</Text>
+            <View style={styles.changeText}>
+              <AppText
+                text="Change"
+                fontFamily={FontFamily.REGULAR}
+                color={Colors.eatMeColor}
+                fontSize={16}
+              />
+            </View>
           </View>
         </TouchableOpacity>
       </View>
@@ -86,8 +112,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   locationText: {
-    color: Colors.error,
-    marginTop: 11,
+    marginTop: 10,
   },
   changeText: {
     color: Colors.eatMeColor,
@@ -114,8 +139,6 @@ const styles = StyleSheet.create({
   },
   locationConfirmText: {
     marginLeft: 10,
-    fontSize: 16,
-    color: Colors.error,
   },
   locationConfirmButtonContainer: {
     marginHorizontal: 20,
@@ -124,10 +147,5 @@ const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 3,
     alignItems: 'center',
-  },
-  locationConfirmButtonText: {
-    justifyContent: 'center',
-    color: Colors.backgroundPrimary,
-    fontWeight: 'bold',
   },
 });
