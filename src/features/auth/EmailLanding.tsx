@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
 import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -58,7 +52,13 @@ const EmailLanding = (): React.JSX.Element => {
         <HeaderComponent />
       </View>
       <View style={styles.container}>
-        <Text style={styles.textHeading}>Sign up or log in</Text>
+        <View style={styles.textHeading}>
+          <AppText
+            text="Sign up or log in"
+            fontFamily={FontFamily.BOLD}
+            fontSize={24}
+          />
+        </View>
         <Controller
           control={form.control}
           rules={{
@@ -101,13 +101,16 @@ const EmailLanding = (): React.JSX.Element => {
           ]}
           disabled={!form.formState.isValid}
           onPress={handleOnPressContinue}>
-          <Text
-            style={[
-              styles.continueButtonText,
-              !form.formState.isValid && styles.disabledButtonText,
-            ]}>
-            Continue
-          </Text>
+          <AppText
+            text="Continue"
+            fontFamily={FontFamily.SEMI_BOLD}
+            fontSize={15}
+            color={
+              !form.formState.isValid
+                ? Colors.disableButtonTextColor
+                : Colors.backgroundPrimary
+            }
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.forgetButton}
@@ -122,7 +125,12 @@ const EmailLanding = (): React.JSX.Element => {
         <TouchableOpacity
           style={styles.continueButton}
           onPress={handleOnPressRegister}>
-          <Text style={styles.continueButtonText}>Register</Text>
+          <AppText
+            text="Register"
+            fontFamily={FontFamily.SEMI_BOLD}
+            fontSize={15}
+            color={Colors.backgroundPrimary}
+          />
         </TouchableOpacity>
       </View>
       <Footer />
@@ -144,8 +152,6 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   textHeading: {
-    fontWeight: 'bold',
-    fontSize: 24,
     marginTop: 65,
     marginBottom: 10,
   },
