@@ -1,4 +1,10 @@
-import {View, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import React from 'react';
 import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -14,15 +20,22 @@ import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
 import AppText from '../../components/AppText';
 import {FontFamily} from '../../theme/FontFamily';
+import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {requestToLogin} from '../../store/slices/authSlice';
+import {useAppSelector} from '../../hooks/useAppSelector';
+import AppPrimaryButton from '../../components/Buttons/AppPrimaryButton';
+import AppSecondaryButton from '../../components/Buttons/AppSecondaryButton';
+import AppTertiaryButton from '../../components/Buttons/AppTertiaryButton';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required').email('Email is invalid'),
-  password: Yup.string()
-    .required('Password is required')
-    .min(6, 'Password must be at least 6 characters'),
+  password: Yup.string().required('Password is required'),
 });
 
 const EmailLanding = (): React.JSX.Element => {
+  const dispatch = useAppDispatch();
+  const {loading} = useAppSelector(state => state.auth);
+
   const form = useForm<LoginFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -38,9 +51,14 @@ const EmailLanding = (): React.JSX.Element => {
     navigation.navigate(ROOT_STACK_SCREENS.REGISTER);
   };
 
-  const handleOnPressContinue = form.handleSubmit((data: LoginFormData) => {
-    console.log(data);
-  });
+  const handleOnPressContinue = form.handleSubmit(
+    async (data: LoginFormData) => {
+      const response = await dispatch(requestToLogin(data));
+      if (response.meta.requestStatus === 'fulfilled') {
+        navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+      }
+    },
+  );
 
   const handleOnPressForgetPassword = () => {
     navigation.navigate(ROOT_STACK_SCREENS.FORGET_EMAIL);
@@ -51,58 +69,53 @@ const EmailLanding = (): React.JSX.Element => {
       <View style={styles.headerContainer}>
         <HeaderComponent />
       </View>
-      <View style={styles.container}>
-        <View style={styles.textHeading}>
-          <AppText
-            text="Sign up or log in"
-            fontFamily={FontFamily.BOLD}
-            fontSize={24}
-          />
-        </View>
-        <Controller
-          control={form.control}
-          rules={{
-            required: true,
-          }}
-          render={({field: {onChange, value}, fieldState: {error}}) => (
-            <AppInput
-              label="Email address"
-              placeholder="e.g. johndoe@gmail.com"
-              value={value}
-              onChangeText={onChange}
-              error={error?.message}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.container}>
+          <View style={styles.textHeading}>
+            <AppText
+              text="Log in"
+              fontFamily={FontFamily.STRATOS_BOLD}
+              fontSize={24}
             />
-          )}
-          name="email"
-        />
-        <View>
+          </View>
           <Controller
             control={form.control}
-            rules={{
-              required: true,
-            }}
             render={({field: {onChange, value}, fieldState: {error}}) => (
               <AppInput
-                placeholder="Enter your password"
+                label="Email address"
+                placeholder="e.g. johndoe@gmail.com"
                 value={value}
                 onChangeText={onChange}
-                secureTextEntry={true}
-                label="Password"
                 error={error?.message}
               />
             )}
-            name="password"
+            name="email"
           />
-        </View>
-        <TouchableOpacity
-          style={[
-            styles.continueButton,
-            !form.formState.isValid && styles.disabledButton,
-          ]}
-          disabled={!form.formState.isValid}
-          onPress={handleOnPressContinue}>
-          <AppText
-            text="Continue"
+          <View>
+            <Controller
+              control={form.control}
+              rules={{
+                required: true,
+              }}
+              render={({field: {onChange, value}, fieldState: {error}}) => (
+                <AppInput
+                  placeholder="Enter your password"
+                  value={value}
+                  onChangeText={onChange}
+                  secureTextEntry={true}
+                  label="Password"
+                  error={error?.message}
+                />
+              )}
+              name="password"
+            />
+          </View>
+          <AppPrimaryButton
+            onPress={handleOnPressContinue}
+            loading={loading}
+            disabled={!form.formState.isValid}
+            text="Login"
             fontFamily={FontFamily.SEMI_BOLD}
             fontSize={15}
             color={
@@ -111,28 +124,22 @@ const EmailLanding = (): React.JSX.Element => {
                 : Colors.backgroundPrimary
             }
           />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.forgetButton}
-          onPress={handleOnPressForgetPassword}>
-          <AppText
+          <AppTertiaryButton
+            onPress={handleOnPressForgetPassword}
             text="Forgot password?"
             fontFamily={FontFamily.REGULAR}
             fontSize={15}
             color={Colors.eatMeColor}
           />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.continueButton}
-          onPress={handleOnPressRegister}>
-          <AppText
+          <AppSecondaryButton
+            onPress={handleOnPressRegister}
             text="Register"
             fontFamily={FontFamily.SEMI_BOLD}
             fontSize={15}
             color={Colors.backgroundPrimary}
           />
-        </TouchableOpacity>
-      </View>
+        </View>
+      </KeyboardAvoidingView>
       <Footer />
     </ScrollView>
   );
@@ -152,24 +159,11 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   textHeading: {
-    marginTop: 65,
+    marginTop: 10,
     marginBottom: 10,
   },
   textInput: {
     marginHorizontal: 15,
-  },
-  continueButton: {
-    backgroundColor: Colors.eatMeColor,
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 14,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  continueButtonText: {
-    color: Colors.backgroundPrimary,
-    fontSize: 15,
-    fontWeight: 'bold',
   },
   forgetButton: {
     backgroundColor: Colors.backgroundPrimary,
