@@ -1,8 +1,8 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Svgs} from '../theme/Svgs';
+import {Svgs} from '../../theme/Svgs';
 import {View} from 'react-native-ui-lib';
-import {Colors} from '../theme/Colors';
+import {Colors} from '../../theme/Colors';
 
 const AddButton = () => {
   const handleOnPressAddDish = () => {};
