@@ -1,9 +1,9 @@
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '../theme/Colors';
-import AddButton from './AddButton';
 import AppText from './AppText';
 import {FontFamily} from '../theme/FontFamily';
+import AddButton from './Buttons/AddButton';
 
 type PopularDishCardProps = {
   dishImage: string;

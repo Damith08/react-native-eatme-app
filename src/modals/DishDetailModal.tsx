@@ -1,6 +1,6 @@
 import {View, Modal, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React, {useState} from 'react';
-import AddButton from '../components/AddButton';
+import AddButton from '../components/Buttons/AddButton';
 import {Svgs} from '../theme/Svgs';
 import {Colors} from '../theme/Colors';
 import AppText from '../components/AppText';
