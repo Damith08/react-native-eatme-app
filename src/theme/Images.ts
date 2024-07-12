@@ -1,6 +1,12 @@
 export const Images = {
+  landingScreenBackgroundImage:
+    'https://eatme.sg/wp-content/uploads/2023/09/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner-copy-scaled.webp',
   mapImage:
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt85bgXe0z4wUGVk_a0-8AvNOf1fa1RVbUzg&s',
+    'https://img2.storyblok.com/filters:format(webp)/f/62776/x/ca59b51c51/map-min.svg',
+  notificationImage:
+    'https://img2.storyblok.com/filters:format(webp)/f/62776/723x236/75533cf121/notification.png',
   dishImage:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT3_9m2PP7d4QSNMk56kYOsb_Ue8k3-pFmIg&s',
+  partnersImages:
+    'https://eatme.sg/wp-content/uploads/2023/10/ogos3-768x245.png',
 };
