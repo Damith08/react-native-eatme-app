@@ -31,7 +31,7 @@ const AppInput: React.FC<AppInputProps> = ({
       <AppText
         text={label}
         fontFamily={FontFamily.REGULAR}
-        fontSize={14}
+        fontSize={16}
         color={Colors.textColor}
       />
       <View style={[!!error && styles.errorInput]}>
@@ -50,7 +50,7 @@ const AppInput: React.FC<AppInputProps> = ({
       <AppText
         text={error}
         fontFamily={FontFamily.REGULAR}
-        fontSize={14}
+        fontSize={16}
         color={Colors.error}
       />
     </View>
