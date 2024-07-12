@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, StyleSheet, TextInputProps, Text} from 'react-native';
+import {TextInput, StyleSheet, TextInputProps} from 'react-native';
 import {Colors} from '../theme/Colors';
 import {View} from 'react-native-ui-lib';
 import AppText from './AppText';
@@ -42,7 +42,12 @@ const AppInput: React.FC<AppInputProps> = ({
           maxLength={maxLength}
         />
       </View>
-      <Text style={styles.errorText}>{error}</Text>
+      <AppText
+        text={error}
+        fontFamily={FontFamily.REGULAR}
+        fontSize={14}
+        color={Colors.error}
+      />
     </View>
   );
 };
@@ -59,13 +64,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundPrimary,
     borderRadius: 4,
     fontSize: 16,
+    fontFamily: FontFamily.REGULAR,
   },
   errorInput: {
     borderWidth: 0.5,
     borderColor: Colors.error,
-  },
-  errorText: {
-    color: Colors.error,
-    marginBottom: 15,
   },
 });
