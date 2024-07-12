@@ -23,10 +23,21 @@ const DetailCard = ({onPress, title, description, source}: DetailCardProps) => {
     <View style={styles.detailCardContainer}>
       <Image source={source} style={styles.image} />
       <View style={styles.headingTextContainer}>
-        <AppText fontSize={25} fontFamily={FontFamily.SEMI_BOLD} text={title} />
+        <AppText
+          text={title}
+          fontSize={25}
+          fontFamily={FontFamily.SEMI_BOLD}
+          color={Colors.textColor}
+        />
       </View>
       <View style={styles.descriptionContainer}>
-        <AppText text={description} fontSize={15} textAlign="justify" />
+        <AppText
+          text={description}
+          fontSize={16}
+          fontFamily={FontFamily.REGULAR}
+          color={Colors.textColor}
+          textAlign="justify"
+        />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={onPress} style={styles.button}>
@@ -53,7 +64,7 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: 10,
-    height: 250,
+    height: 280,
     width: 360,
     marginBottom: 10,
   },
