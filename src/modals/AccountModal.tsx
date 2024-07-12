@@ -202,10 +202,8 @@ const styles = StyleSheet.create({
   closeIcon: {marginTop: 27, marginRight: 20},
   accountButton: {
     borderRadius: 2,
-    marginRight: 20,
     backgroundColor: Colors.backgroundPrimary,
     borderWidth: 0.25,
-    borderColor: 'grey',
   },
   accountIcon: {
     padding: 10,
