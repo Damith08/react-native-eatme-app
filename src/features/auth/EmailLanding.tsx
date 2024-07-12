@@ -75,8 +75,9 @@ const EmailLanding = (): React.JSX.Element => {
           <View style={styles.textHeading}>
             <AppText
               text="Log in"
-              fontFamily={FontFamily.STRATOS_BOLD}
+              fontFamily={FontFamily.BOLD}
               fontSize={24}
+              color={Colors.textColor}
             />
           </View>
           <Controller
@@ -115,9 +116,9 @@ const EmailLanding = (): React.JSX.Element => {
             onPress={handleOnPressContinue}
             loading={loading}
             disabled={!form.formState.isValid}
-            text="Login"
+            text="Log in"
             fontFamily={FontFamily.SEMI_BOLD}
-            fontSize={15}
+            fontSize={16}
             color={
               !form.formState.isValid
                 ? Colors.disableButtonTextColor
