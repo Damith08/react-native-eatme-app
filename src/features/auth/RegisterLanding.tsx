@@ -1,29 +1,23 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-} from 'react-native';
+import {View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import React from 'react';
 import HeaderComponent from '../../components/Header';
 import Footer from '../../components/Footer';
-import {useNavigation} from '@react-navigation/native';
-import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../navigation/RootStackNavigator';
-import {useForm, Controller, SubmitHandler} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {RegisterFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootState} from '../../store/store';
+import {AppDispatch, RootState} from '../../store';
 import {registerUser} from '../../store/slices/authSlice';
-import AppText from '../../components/AppText';
 import {FontFamily} from '../../theme/FontFamily';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/RootStackNavigator';
+import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
+import AppPrimaryButton from '../../components/Buttons/AppPrimaryButton';
+import AppText from '../../components/AppText';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
@@ -43,16 +37,7 @@ const schema = Yup.object().shape({
 });
 
 const RegisterLanding = (): React.JSX.Element => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  const menuScreenLandingHandler = () => {
-    handleSubmit(onSubmit)();
-  };
-
-  const {control, handleSubmit} = useForm<RegisterFormData>({
+  const form = useForm<RegisterFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
       firstName: '',
@@ -65,14 +50,21 @@ const RegisterLanding = (): React.JSX.Element => {
     },
   });
 
-  const {loading, fail} = useSelector((state: RootState) => state.auth);
-  const onSubmit: SubmitHandler<RegisterFormData> = async data => {
-    await dispatch(registerUser(data));
-    console.log(data);
-    if (!fail) {
-      navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
-    }
-  };
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleOnPressMenu = form.handleSubmit(
+    async (data: RegisterFormData) => {
+      const response = await dispatch(registerUser(data));
+      if (response.meta.requestStatus === 'fulfilled') {
+        navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+      }
+    },
+  );
+
+  const {loading} = useSelector((state: RootState) => state.auth);
 
   return (
     <ScrollView>
@@ -80,9 +72,16 @@ const RegisterLanding = (): React.JSX.Element => {
         <HeaderComponent />
       </View>
       <View style={styles.container}>
-        <Text style={styles.textHeading}>Sign in</Text>
+        <View style={styles.textHeading}>
+          <AppText
+            text="Sign in"
+            fontFamily={FontFamily.BOLD}
+            fontSize={24}
+            color={Colors.textColor}
+          />
+        </View>
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -99,7 +98,7 @@ const RegisterLanding = (): React.JSX.Element => {
         />
 
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -116,13 +115,13 @@ const RegisterLanding = (): React.JSX.Element => {
         />
 
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
           render={({field: {onChange, value}, fieldState: {error}}) => (
             <AppInput
-              label="username"
+              label="Username"
               placeholder="e.g. johndoe8"
               value={value}
               onChangeText={onChange}
@@ -133,7 +132,7 @@ const RegisterLanding = (): React.JSX.Element => {
         />
 
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -151,7 +150,7 @@ const RegisterLanding = (): React.JSX.Element => {
           name="contact"
         />
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -168,7 +167,7 @@ const RegisterLanding = (): React.JSX.Element => {
           name="address"
         />
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -186,7 +185,7 @@ const RegisterLanding = (): React.JSX.Element => {
         />
 
         <Controller
-          control={control}
+          control={form.control}
           rules={{
             required: true,
           }}
@@ -203,20 +202,17 @@ const RegisterLanding = (): React.JSX.Element => {
           )}
           name="password"
         />
-        <TouchableOpacity
-          style={styles.continueButton}
-          onPress={menuScreenLandingHandler}>
-          {loading ? (
-            <ActivityIndicator size="small" color={Colors.backgroundPrimary} />
-          ) : (
-            <AppText
-              text="Continue"
-              fontSize={16}
-              color={Colors.backgroundPrimary}
-              fontFamily={FontFamily.SEMI_BOLD}
-            />
-          )}
-        </TouchableOpacity>
+        {loading ? (
+          <ActivityIndicator size="large" color={Colors.eatMeColor} />
+        ) : (
+          <AppPrimaryButton
+            onPress={handleOnPressMenu}
+            text="Sign in"
+            fontSize={16}
+            color={Colors.backgroundPrimary}
+            fontFamily={FontFamily.SEMI_BOLD}
+          />
+        )}
       </View>
       <Footer />
     </ScrollView>
@@ -237,9 +233,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   textHeading: {
-    fontWeight: 'bold',
-    fontSize: 24,
-    marginTop: 65,
+    marginTop: 10,
     marginBottom: 10,
   },
   textInputContainer: {
