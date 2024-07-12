@@ -28,7 +28,12 @@ const AppInput: React.FC<AppInputProps> = ({
 }) => {
   return (
     <View>
-      <AppText text={label} fontFamily={FontFamily.REGULAR} fontSize={14} />
+      <AppText
+        text={label}
+        fontFamily={FontFamily.REGULAR}
+        fontSize={14}
+        color={Colors.textColor}
+      />
       <View style={[!!error && styles.errorInput]}>
         <TextInput
           style={styles.input}
@@ -65,6 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     fontSize: 16,
     fontFamily: FontFamily.REGULAR,
+    color: Colors.textColor,
   },
   errorInput: {
     borderWidth: 0.5,
