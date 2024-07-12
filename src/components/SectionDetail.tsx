@@ -26,7 +26,7 @@ const SectionDetail = () => {
   return (
     <View>
       <ImageBackground
-        resizeMode="stretch"
+        resizeMode="cover"
         source={{uri: Images.landingScreenBackgroundImage}}>
         <Header />
         <View style={styles.container}>
