@@ -1,6 +1,6 @@
 export const Images = {
   landingScreenBackgroundImage:
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN54LwvxEMNe0Z0TvQglVwUaINtwy0Zma1HQ&s',
+    'https://images.deliveryhero.io/image/stores-glovo/stores/67b298792342144cb2a28c1b0868a3f04dd27998cdd3edfde73c899643cfd424?t=W3siYXV0byI6eyJxIjoibG93In19LHsicmVzaXplIjp7Im1vZGUiOiJmaWxsIiwiYmciOiJ0cmFuc3BhcmVudCIsIndpZHRoIjo1ODgsImhlaWdodCI6MzIwfX1d',
   mapImage:
     'https://img2.storyblok.com/filters:format(webp)/f/62776/x/ca59b51c51/map-min.svg',
   notificationImage:
