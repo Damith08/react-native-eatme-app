@@ -75,5 +75,6 @@ const styles = StyleSheet.create({
   errorInput: {
     borderWidth: 0.5,
     borderColor: Colors.error,
+    borderRadius: 4,
   },
 });
