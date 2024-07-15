@@ -64,6 +64,18 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, state => {
         state.loading = false;
       });
+    builder
+      .addCase(requestToLogin.pending, state => {
+        state.loading = true;
+      })
+      .addCase(requestToLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        console.log(action.payload, 'filled');
+        state.accessToken = action.payload;
+      })
+      .addCase(requestToLogin.rejected, state => {
+        state.loading = false;
+      });
   },
 });
 
