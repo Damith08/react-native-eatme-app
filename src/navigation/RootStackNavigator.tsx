@@ -7,6 +7,7 @@ import EmailLanding from '../features/auth/EmailLanding';
 import ForgetLanding from '../features/auth/ForgetLanding';
 import RegisterLanding from '../features/auth/RegisterLanding';
 import MenuScreen from '../features/home/MenuScreen';
+import ResetPasswordLanding from '../features/auth/ResetPasswordLanding';
 
 export type RootStackParams = {
   [ROOT_STACK_SCREENS.AUTH]: undefined;
@@ -15,6 +16,7 @@ export type RootStackParams = {
   [ROOT_STACK_SCREENS.LANDING_SCREEN]: undefined;
   [ROOT_STACK_SCREENS.MENU_SCREEN]: undefined;
   [ROOT_STACK_SCREENS.REGISTER]: undefined;
+  [ROOT_STACK_SCREENS.PASSWORD_RESET]: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +33,10 @@ const RootStackNavigator = (): React.JSX.Element => {
       <Stack.Screen
         name={ROOT_STACK_SCREENS.FORGET_EMAIL}
         component={ForgetLanding}
+      />
+      <Stack.Screen
+        name={ROOT_STACK_SCREENS.PASSWORD_RESET}
+        component={ResetPasswordLanding}
       />
       <Stack.Screen
         name={ROOT_STACK_SCREENS.REGISTER}

@@ -12,3 +12,11 @@ export type LoginFormData = {
   email: string;
   password: string;
 };
+
+export type CheckEmailData = {
+  email: string;
+};
+
+export type ResetPassword = {
+  password: string;
+};

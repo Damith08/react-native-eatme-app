@@ -5,4 +5,5 @@ export enum ROOT_STACK_SCREENS {
   EMAIL = 'EmailLanding',
   FORGET_EMAIL = 'ForgetLanding',
   REGISTER = 'RegisterLanding',
+  PASSWORD_RESET = 'ResetPasswordLanding',
 }
