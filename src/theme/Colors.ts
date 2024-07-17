@@ -1,6 +1,7 @@
 export const Colors = {
   eatMeColor: '#E27A39',
   secondaryButtonColor: '#3c91f4',
+  facebookColor: '#4c69ba',
   success: '#4d7c1b',
   error: '#900',
   disableButtonColor: '#d3d3d3',
