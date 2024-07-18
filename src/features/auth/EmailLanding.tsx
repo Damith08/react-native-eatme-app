@@ -4,9 +4,10 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import React from 'react';
-import HeaderComponent from '../../components/Header';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {useNavigation} from '@react-navigation/native';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
@@ -26,6 +27,10 @@ import {useAppSelector} from '../../hooks/useAppSelector';
 import AppPrimaryButton from '../../components/Buttons/AppPrimaryButton';
 import AppSecondaryButton from '../../components/Buttons/AppSecondaryButton';
 import AppTertiaryButton from '../../components/Buttons/AppTertiaryButton';
+import DropdownAlert, {
+  DropdownAlertData,
+  DropdownAlertType,
+} from 'react-native-dropdownalert';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -54,8 +59,21 @@ const EmailLanding = (): React.JSX.Element => {
   const handleOnPressContinue = form.handleSubmit(
     async (data: LoginFormData) => {
       const response = await dispatch(requestToLogin(data));
-      if (response.meta.requestStatus === 'fulfilled') {
-        navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+      try {
+        if (response.meta.requestStatus === 'fulfilled') {
+          alert({
+            type: DropdownAlertType.Success,
+            title: 'Success',
+            message: 'Login successful!',
+          });
+          navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+        }
+      } catch (error) {
+        alert({
+          type: DropdownAlertType.Error,
+          title: 'Error',
+          message: 'Something went wrong',
+        });
       }
     },
   );
@@ -64,10 +82,13 @@ const EmailLanding = (): React.JSX.Element => {
     navigation.navigate(ROOT_STACK_SCREENS.FORGET_EMAIL);
   };
 
+  let alert = (_data: DropdownAlertData) =>
+    new Promise<DropdownAlertData>(res => res);
+
   return (
     <ScrollView>
       <View style={styles.headerContainer}>
-        <HeaderComponent />
+        <Header />
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -112,19 +133,23 @@ const EmailLanding = (): React.JSX.Element => {
               name="password"
             />
           </View>
-          <AppPrimaryButton
-            onPress={handleOnPressContinue}
-            loading={loading}
-            disabled={!form.formState.isValid}
-            text="Log in"
-            fontFamily={FontFamily.SEMI_BOLD}
-            fontSize={16}
-            color={
-              !form.formState.isValid
-                ? Colors.disableButtonTextColor
-                : Colors.backgroundPrimary
-            }
-          />
+          {loading ? (
+            <ActivityIndicator size="large" color={Colors.eatMeColor} />
+          ) : (
+            <AppPrimaryButton
+              onPress={handleOnPressContinue}
+              loading={loading}
+              disabled={!form.formState.isValid}
+              text="Log in"
+              fontFamily={FontFamily.SEMI_BOLD}
+              fontSize={16}
+              color={
+                !form.formState.isValid
+                  ? Colors.disableButtonTextColor
+                  : Colors.backgroundPrimary
+              }
+            />
+          )}
           <AppTertiaryButton
             onPress={handleOnPressForgetPassword}
             text="Forgot password?"
@@ -142,6 +167,7 @@ const EmailLanding = (): React.JSX.Element => {
         </View>
       </KeyboardAvoidingView>
       <Footer />
+      <DropdownAlert alert={func => (alert = func)} />
     </ScrollView>
   );
 };
@@ -151,7 +177,7 @@ export default EmailLanding;
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: Colors.backgroundPrimary,
-    shadowColor: '#333',
+    shadowColor: Colors.shadowColor,
     borderBottomWidth: 0.25,
   },
   container: {
