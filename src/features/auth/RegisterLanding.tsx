@@ -1,16 +1,15 @@
 import {View, StyleSheet, ScrollView, ActivityIndicator} from 'react-native';
 import React from 'react';
-import HeaderComponent from '../../components/Header';
+import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import {RegisterFormData} from '../../types/types';
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../store';
-import {registerUser} from '../../store/slices/authSlice';
+import {requestToRegister} from '../../store/slices/authSlice';
 import {FontFamily} from '../../theme/FontFamily';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -18,6 +17,11 @@ import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {ROOT_STACK_SCREENS} from '../../constants/NavigationConstants';
 import AppPrimaryButton from '../../components/Buttons/AppPrimaryButton';
 import AppText from '../../components/AppText';
+import DropdownAlert, {
+  DropdownAlertData,
+  DropdownAlertType,
+} from 'react-native-dropdownalert';
+import {RegisterFormData} from '../../types/auth.types';
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('First Name is required'),
@@ -57,19 +61,29 @@ const RegisterLanding = (): React.JSX.Element => {
 
   const handleOnPressMenu = form.handleSubmit(
     async (data: RegisterFormData) => {
-      const response = await dispatch(registerUser(data));
+      const response = await dispatch(requestToRegister(data));
+      const alertData = await alert({
+        type: DropdownAlertType.Error,
+        title: 'Error',
+        message: 'Something went wrong.',
+      });
       if (response.meta.requestStatus === 'fulfilled') {
         navigation.navigate(ROOT_STACK_SCREENS.MENU_SCREEN);
+      } else {
+        alertData;
       }
     },
   );
 
   const {loading} = useSelector((state: RootState) => state.auth);
 
+  let alert = (_data: DropdownAlertData) =>
+    new Promise<DropdownAlertData>(res => res);
+
   return (
     <ScrollView>
       <View style={styles.headerContainer}>
-        <HeaderComponent />
+        <Header />
       </View>
       <View style={styles.container}>
         <View style={styles.textHeading}>
@@ -215,6 +229,7 @@ const RegisterLanding = (): React.JSX.Element => {
         )}
       </View>
       <Footer />
+      <DropdownAlert alert={func => (alert = func)} />
     </ScrollView>
   );
 };
@@ -224,7 +239,7 @@ export default RegisterLanding;
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: Colors.backgroundPrimary,
-    shadowColor: '#333',
+    shadowColor: Colors.shadowColor,
     borderBottomWidth: 0.25,
   },
   container: {
