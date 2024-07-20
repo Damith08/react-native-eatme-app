@@ -1,13 +1,13 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROOT_STACK_SCREENS} from '../constants/NavigationConstants';
-import LandingScreen from '../features/home/LandingScreen';
 import AuthLanding from '../features/auth/AuthLanding';
 import EmailLanding from '../features/auth/EmailLanding';
 import ForgetLanding from '../features/auth/ForgetLanding';
 import RegisterLanding from '../features/auth/RegisterLanding';
-import MenuScreen from '../features/home/MenuScreen';
+import MenuScreen from '../features/home/screens/MenuScreen';
 import ResetPasswordLanding from '../features/auth/ResetPasswordLanding';
+import LandingScreen from '../features/home/screens/LandingScreen';
 
 export type RootStackParams = {
   [ROOT_STACK_SCREENS.AUTH]: undefined;
