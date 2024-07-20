@@ -8,15 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Footer from '../../components/Footer';
-import {Svgs} from '../../theme/Svgs';
-import DetailCard from '../../components/DetailCard';
-import {CardComponent} from '../../constants/CardComponent';
-import {Colors} from '../../theme/Colors';
-import {Images} from '../../theme/Images';
-import AppText from '../../components/AppText';
-import {FontFamily} from '../../theme/FontFamily';
-import SectionDetail from '../../components/SectionDetail';
+import {Svgs} from '../../../theme/Svgs';
+import DetailCard from '../../../components/DetailCard';
+import {CardComponent} from '../../../constants/CardComponent';
+import {Colors} from '../../../theme/Colors';
+import {Images} from '../../../theme/Images';
+import AppText from '../../../components/AppText';
+import {FontFamily} from '../../../theme/FontFamily';
+import SectionDetail from '../../../components/SectionDetail';
+import Footer from '../../../components/Footer';
 
 const LandingScreen = () => {
   return (
