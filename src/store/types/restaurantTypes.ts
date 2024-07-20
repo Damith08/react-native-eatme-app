@@ -1,0 +1,3 @@
+export enum RestaurantType {
+  REQUEST_RESTAURANT_DETAILS = 'RESTAURANT/RESTAURANT_DETAILS',
+}
