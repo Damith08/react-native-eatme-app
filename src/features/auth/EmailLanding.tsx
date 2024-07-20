@@ -16,7 +16,7 @@ import {RootStackParams} from '../../navigation/RootStackNavigator';
 import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import {LoginFormData} from '../../types/types';
+
 import {Colors} from '../../theme/Colors';
 import AppInput from '../../components/AppInput';
 import AppText from '../../components/AppText';
@@ -27,9 +27,11 @@ import {useAppSelector} from '../../hooks/useAppSelector';
 import AppPrimaryButton from '../../components/Buttons/AppPrimaryButton';
 import AppSecondaryButton from '../../components/Buttons/AppSecondaryButton';
 import AppTertiaryButton from '../../components/Buttons/AppTertiaryButton';
+
+import {LoginFormData} from '../../types/auth.types';
 import DropdownAlert, {
-  DropdownAlertData,
   DropdownAlertType,
+  DropdownAlertData,
 } from 'react-native-dropdownalert';
 
 const schema = Yup.object().shape({

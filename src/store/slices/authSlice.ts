@@ -1,40 +1,63 @@
 import {PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {IAuthState, IRootUser} from '../../types/auth.types';
-import {LoginFormData, RegisterFormData} from '../../types/types';
+import {
+  IAuthSlice,
+  IToken,
+  IUser,
+  CheckEmailData,
+  LoginFormData,
+  RegisterFormData,
+} from '../../types/auth.types';
+import {IResponse} from '../../types/common.types';
 import axios from 'axios';
 import {AuthTypes} from '../types/authTypes';
 
-const initialState: IAuthState = {
+const initialState: IAuthSlice = {
   loading: false,
 };
 
-export const registerUser = createAsyncThunk(
+export const requestToRegister = createAsyncThunk<IUser, RegisterFormData>(
   AuthTypes.REQUEST_TO_REGISTER,
   async (payload: RegisterFormData, {rejectWithValue}) => {
     try {
-      const response = await axios.post(
-        'http://192.168.1.12:3000/auth/signup',
+      const response = await axios.post<IResponse<IUser>>(
+        'http://10.0.2.2:3000/auth/signup',
         payload,
       );
-      return response.data;
+      return response.data.data;
     } catch (error) {
-      console.log(error, 'error');
+      console.error(error, 'error');
       return rejectWithValue('error');
     }
   },
 );
 
-export const requestToLogin = createAsyncThunk(
+export const requestToLogin = createAsyncThunk<IToken, LoginFormData>(
   AuthTypes.REQUEST_TO_LOGIN,
   async (payload: LoginFormData, {rejectWithValue}) => {
     try {
+      const response = await axios.post<IResponse<IToken>>(
+        'http://10.0.2.2:3000/auth/login',
+        payload,
+      );
+      return response.data.data;
+    } catch (error) {
+      console.error(error, 'error');
+      return rejectWithValue('error');
+    }
+  },
+);
+
+export const checkEmail = createAsyncThunk(
+  AuthTypes.CHECK_EMAIL,
+  async (payload: CheckEmailData, {rejectWithValue}) => {
+    try {
       const response = await axios.post(
-        'http://192.168.1.12:3000/auth/login',
+        'http://10.0.2.2:3000/auth/check-email',
         payload,
       );
       return response.data;
     } catch (error) {
-      console.log(error, 'error');
+      console.error(error, 'error');
       return rejectWithValue('error');
     }
   },
@@ -47,38 +70,40 @@ const authSlice = createSlice({
     setAccessToken: (state, action: PayloadAction<string | undefined>) => {
       state.accessToken = action.payload;
     },
-    setRootUser: (state, action: PayloadAction<IRootUser | undefined>) => {
-      state.rootUser = action.payload;
-    },
   },
   extraReducers: builder => {
     builder
-      .addCase(registerUser.pending, state => {
+      .addCase(requestToRegister.pending, state => {
         state.loading = true;
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(requestToRegister.fulfilled, state => {
         state.loading = false;
-        console.log(action.payload, 'filled');
-        state.accessToken = action.payload;
       })
-      .addCase(registerUser.rejected, state => {
+      .addCase(requestToRegister.rejected, state => {
         state.loading = false;
-      });
-    builder
+      })
       .addCase(requestToLogin.pending, state => {
         state.loading = true;
       })
-      .addCase(requestToLogin.fulfilled, (state, action) => {
+      .addCase(requestToLogin.fulfilled, state => {
         state.loading = false;
-        console.log(action.payload, 'filled');
-        state.accessToken = action.payload;
       })
       .addCase(requestToLogin.rejected, state => {
+        state.loading = false;
+      })
+      .addCase(checkEmail.pending, state => {
+        state.loading = true;
+      })
+      .addCase(checkEmail.fulfilled, (state, action) => {
+        state.loading = false;
+        state.accessToken = action.payload;
+      })
+      .addCase(checkEmail.rejected, state => {
         state.loading = false;
       });
   },
 });
 
-export const {setAccessToken, setRootUser} = authSlice.actions;
+export const {setAccessToken} = authSlice.actions;
 
 export default authSlice.reducer;
