@@ -1,3 +1,8 @@
+export interface ICategorySlice {
+  loading: boolean;
+  category?: ICategory[];
+}
+
 export type ICategory = {
   _id: string;
   name: string;
