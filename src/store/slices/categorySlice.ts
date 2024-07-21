@@ -40,7 +40,6 @@ const categorySlice = createSlice({
       })
       .addCase(requestToCategories.fulfilled, (state, action) => {
         state.loading = false;
-        console.log('action.payload', action.payload);
         state.category = action.payload;
       })
       .addCase(requestToCategories.rejected, state => {
