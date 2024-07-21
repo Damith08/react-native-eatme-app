@@ -1,0 +1,3 @@
+export const enum CategoryTypes {
+  REQUEST_TO_CATEGORY_DETAILS = 'CATEGORY/CATEGORY_DETAILS',
+}
