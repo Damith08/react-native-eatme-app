@@ -39,8 +39,8 @@ const MenuScreen = () => {
         <>
           <Header />
           <MenuRestaurantCard />
-          <PopularDishCategory />
           <HorizontalCategoriesBar />
+          <PopularDishCategory />
         </>
       }
       ref={flatListRef}
